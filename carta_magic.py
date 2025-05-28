@@ -17,12 +17,19 @@ class CartaMagic:
     custo: str
     tipo: TipoCarta
     descricao: str
+    poder_base: int = 0
+    resistencia_base: int = 0
     poder: int = 0
     resistencia: int = 0
 
+    def __post_init__(self):
+        self.poder = self.poder_base
+        self.resistencia = self.resistencia_base
+
     def __str__(self) -> str:
-        base = f"{self.nome} ({self.custo}) - {self.tipo.value}\n{self.descricao}"
-        if self.poder or self.resistencia:
-            base += f"\n{self.poder}/{self.resistencia}"
-        return base
+        texto = f"--- {self.nome} - ({self.custo})---\n--- {self.tipo.value}\n{self.descricao}"
+        if self.tipo == TipoCarta.CRIATURA:
+            texto += f"\n{self.poder}/{self.resistencia}"
+        texto += "\n"
+        return texto
 

@@ -1,4 +1,5 @@
 from carta_magic import CartaMagic, TipoCarta
+from batalha import batalha_criaturas
 
 if __name__ == "__main__":
     carta = CartaMagic(
@@ -8,12 +9,23 @@ if __name__ == "__main__":
         descricao="Relâmpago causa 3 pontos de dano a qualquer alvo."
     )
     print(carta)
-    criatura = CartaMagic(
+    criatura1 = CartaMagic(
         nome="Urso Cinzento",
         custo="1G",
         tipo=TipoCarta.CRIATURA,
         descricao="Uma criatura simples.",
-        poder=2,
-        resistencia=2
+        poder_base=2,
+        resistencia_base=2
     )
-    print(criatura)
+    print(criatura1)
+    criatura2 = CartaMagic(
+        nome="Goblin Selvagem",
+        custo="R",
+        tipo=TipoCarta.CRIATURA,
+        descricao="Um goblin agressivo.",
+        poder_base=1,
+        resistencia_base=1
+    )
+    print(criatura2)
+
+    print(batalha_criaturas(criatura1, criatura2))
