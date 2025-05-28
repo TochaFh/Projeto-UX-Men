@@ -15,7 +15,8 @@ if __name__ == "__main__":
         tipo=TipoCarta.CRIATURA,
         descricao="Uma criatura simples.",
         poder_base=2,
-        resistencia_base=2
+        resistencia_base=2,
+        iniciativa=True
     )
     print(criatura1)
     criatura2 = CartaMagic(
@@ -28,4 +29,4 @@ if __name__ == "__main__":
     )
     print(criatura2)
 
-    print(batalha_criaturas(criatura1, criatura2))
+    print(batalha_criaturas(criatura1, [criatura2]))
