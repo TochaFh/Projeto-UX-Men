@@ -1,0 +1,1 @@
+# códico pra comunicar com o RaspBerry Pi via serial

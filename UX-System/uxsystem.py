@@ -1,0 +1,1 @@
+# funções que serão disponibilizadas para os jogos
