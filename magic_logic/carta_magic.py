@@ -38,16 +38,19 @@ class CartaMagic:
     def tomar_dano(self, dano: int) -> None:
         self.resistencia -= dano
 
+    # igual ao poder se a criatura tiver iniciativa ou golpe duplo
     def dano_de_iniciativa(self) -> int:
         if self.iniciativa or self.golpe_duplo:
             return self.poder
         return 0
 
+    # só não existe se a criatura tiver iniciativa
     def dano_basico(self) -> int:
         if self.iniciativa:
             return 0
         return self.poder
     
+    # subtrai um certo valor do poder (para em zero)
     def ataque(self, dano_infligido: int) -> None:
         self.poder -= dano_infligido
         if self.poder < 0:
