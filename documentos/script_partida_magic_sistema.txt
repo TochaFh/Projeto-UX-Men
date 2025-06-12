@@ -1,0 +1,99 @@
+ANTES DE INICIAR O JOGO
+> De alguma forma avisamos o sistema que vamos jogar nossa partida scriptada de magic
+    > O sistema carrega as 6 cartas digitais necessárias em uma ordem
+    Ex: ['Heartfire Hero', 'Monstrous Rage', 'Burn Together',
+         'Llanowar Elves', 'Unstoppable Slasher', 'Bloodletter of Aclazotz']
+        (Note que isso são apenas as cartas digitais, elas ainda não estão associadas aos RFIDs)
+
+> O sistema pede que o jogador 1 passe suas 3 cartas físicas pelo leitor de RFID
+    > Quando o jogador passa as cartas físicas, o sistema lê o RFID e associa cada ID a uma carta digital
+    e ao jogador que possui aquela carta, seguindo a ordem estabelecida anteriormente
+    Ex: suponha que o primeiro jogador passe RFIDs com valor 23, 51, 10 (nesta ordem). Teríamos então a associação:
+    {23:('Heartfire Hero', 1), 51:('Monstrous Rage', 1), 10:('Burn Together', 1)}
+
+    obs: Para evitar problemas com possíveis 'leituras duplas' (acidentais) de um mesmo RFID, podemos colocar
+    uma verificação nesse processo de atribuição das cartas físicas às digitais.
+        if (RFID não está associado a nenhuma carta digital) {associar o RFID à próxima carta digital}
+
+> O mesmo processo acontece com o jogador 2
+
+> O sistema pede uma confirmação para iniciar a partida
+
+TURNO 1 - GOLGARI
+- Joga 'Llanowar Elves'
+    > O jogador GOLGARI passa a carta física associada a 'Llanowar Elves' pelo leitor RFID
+        // Provavelmente teríamos que decorar quais cartas físicas estão associadas às cartas digitais,
+        // mas neste momento explicamos ao professor que nosso projeto real teria um hardware leitor de carta para cada jogador
+    > O sistema pergunta ao jogador se ele realmente quer jogar a carta 'Llanowar Elves' e espera uma confirmação
+    > Após confirmar, o jogador coloca a carta na mesa (no 'campo de batalha')
+- Encerra o turno
+    > O jogador passa algum comando ao computador ou aperta um botão dedicado a finalizar o turno
+(5 cartas na mão)
+
+TURNO 1 - MONO RED
+- Joga 'Heartfire Hero'
+    > O jogador MONO RED passa a carta física de 'Heartfire Hero' pelo leitor, confirma que quer jogá-la e a coloca na mesa
+- Encerra o turno
+    > Comando ou botão
+(6 cartas na mão)
+
+TURNO 2 - GOLGARI
+- Joga 'Unstoppable Slasher', 'Llanowar Elves' fica tapped
+    > Pega a carta física de 'Llanowar Elves', que está na mesa, e passa pelo leitor.
+    O sistema pergunta se o jogador quer ativar a habilidade daquela carta e espera uma confirmação.
+    Após confirmar, o jogador devolve a carta à mesa.
+    > Passa carta física de 'Unstoppable Slasher' pelo leitor, confirma e põe na mesa
+- Encerra o turno
+    > Comando ou botão
+(4 cartas na mão)
+
+TURNO 2 - MONO RED
+- Joga 'Monstrous Rage' em 'Heartfire Hero' e sua triggered ability é ativada
+    > Passa carta 'Monstrous Rage' pelo leitor. O sistema então pede que o jogador passe pelo leitor a carta da criatura alvo, que neste caso deve ser a carta 'Heartfire Hero'
+    > O sistema informa que a triggered ability de 'Heartfire Hero' foi adicionada ao stack. 
+    > Diz ao primeiro jogador "Adicione ao stack ou passe a prioridade". O primeiro jogador passa a prioridade (botão ou comando)
+    > Mesma coisa para o segundo jogador
+    > Após os dois passarem a prioridade, o sistema resolve o stack e vai informando as consequências aos jogadores
+        > "Heartfire Hero recebe um contador +1/+1. (Agora a criatura é 2/2)"
+        > "Heartfire Hero recebe +2/+0 até o fim do turno e um Monster Role Token é vinculado a essa criatura. (Agora a criatura é 5/3)
+- Ataca com 'Heartfire Hero' (5/3)
+    > Jogadores passam para a próxima etapa do turno (declarar ataques) ao passar prioridade (botão/comando) com o stack vazio
+    > Sistema pede que o jogador atacante passe pelo leitor as criaturas atacantes e espera confirmação
+    - Jogador GOLGARI não bloqueia
+        > Sistema pede que o jogador bloqueador declare os bloqueadores, passando pelo leitor pares bloqueador/atacante (em sequência).
+        No nosso caso o jogador bloqueador vai apenas confirmar, sem adicionar nenhum bloqueador
+    - Jogador GOLGARI toma 5 de dano (15 de vida restante)
+        > Sistema informa dano recebido e vida restante do jogador GOLGARI
+- Joga 'Burn Together', de forma que a criatura alvo é 'Heartfire Hero' e o jogador alvo é o jogador GOLGARI
+    > Jogar 'Burn Together' e escolher a criatura alvo ocorre de forma similar à jogar 'Monstrous Rage'.
+    Escolher o jogador alvo provavelmente teria que ser uma escolha feita no computador, dada uma lista de opções
+    - 'Burn Together' resolve, causa 5 de dano ao jogador GOLGARI (10 de vida restante) e sacrifica 'Heartfire Hero', adicionando sua triggered ability ao stack
+        > Sistema informa dano causado, vida restante 
+    - A triggered ability é resolvida com o jogador GOLGARI como alvo, causando 5 de dano (5 de vida restante)
+        > Mesmo procedimento de dano que 'Burn Together' e resolução do stack similar a o que acontece com 'Monstrous Rage'
+- Encerra o turno
+    > Comando ou botão
+(4 cartas na mão)
+
+TURNO 3 - GOLGARI
+- Joga 'Bloodletter of Aclazotz'
+    > Passa carta pelo leitor, confirma e põe na mesa
+- Ataca com 'Unstoppable Slasher'
+    > Declaração de atacantes/bloqueadores similar ao turno anterior
+    - 'Unstoppable Slasher' causa 4 de dano ao jogador MONO RED (pois 'Bloodletter of Aclazotz' está em campo) e adiciona sua triggered ability ao stack
+    - A triggered ability é resolvida e o jogador MONO RED perde toda sua vida (pois 'Bloodletter of Aclazotz' está em campo)
+    
+    obs: não tenho certeza como implementaríamos no código o dano sendo dobrado devido à presença do Bloodletter
+
+Fim do jogo, jogador GOLGARI vence
+
+Cartas utilizadas:
+- MONO RED:
+    - 'Heartfire Hero' (https://cards.scryfall.io/large/front/4/8/48ace959-66b2-40c8-9bff-fd7ed9c99a82.jpg?1738269538)
+    - 'Monstrous Rage' (https://cards.scryfall.io/large/front/e/e/eef5a0ae-5907-42c9-a097-3f973737e392.jpg?1731516167)
+    - 'Burn Together' (https://cards.scryfall.io/large/front/7/7/770ee3da-d33e-466f-9a2e-ad2d08ef5012.jpg?1692939554)
+
+- GOLGARI:
+    - 'Llanowar Elves' (https://cards.scryfall.io/large/front/6/a/6a0b230b-d391-4998-a3f7-7b158a0ec2cd.jpg?1731652605)
+    - 'Unstoppable Slasher' (https://cards.scryfall.io/large/front/c/7/c78da035-6b5b-4136-9ab6-f622b64fdc54.jpg?1726286292)
+    - 'Bloodletter of Aclazotz' (https://cards.scryfall.io/large/front/d/4/d4f6027a-003a-4f9d-929a-0b6da1fa42c9.jpg?1699044094)
