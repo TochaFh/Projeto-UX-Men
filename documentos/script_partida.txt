@@ -1,0 +1,44 @@
+Como teremos poucas cartas, não vou representar os jogadores jogando terrenos.
+Vamos supor que em todo turno um terreno untapped e que fornece todas as cores
+de mana de cada deck é jogado.
+
+Nessa partida temos 2 jogadores, o primeiro com um deck mono red aggro e o segundo
+com um deck verde/preto (golgari) com ramp e combo
+
+Vamos supor que o deck golgari joga primeiro.
+
+TURNO 1 - GOLGARI
+- Joga 'Llanowar Elves'
+- Encerra o turno
+(5 cartas na mão)
+
+TURNO 1 - MONO RED
+- Joga 'Heartfire Hero'
+- Encerra o turno
+(5 cartas na mão)
+
+TURNO 2 - GOLGARI
+- Joga 'Unstoppable Slasher', 'Llanowar Elves' fica tapped
+- Encerra o turno
+(4 cartas na mão)
+
+TURNO 2 - MONO RED
+- Joga 'Monstrous Rage' em 'Heartfire Hero' e sua triggered ability é ativada
+    - O stack resolve primeiro a triggered ability, e 'Heartfire Hero' se torna um 2/2
+    - Em seguida, 'Monstrous Rage' resolve e 'Heartfire 'Hero' se torna um 5/3
+- Ataca com 'Heartfire Hero' (5/3)
+    - Jogador GOLGARI não bloqueia
+    - Jogador GOLGARI toma 5 de dano (15 de vida total)
+- Joga 'Burn Together', de forma que a criatura alvo é 'Heartfire Hero' e o jogador alvo é o jogador GOLGARI
+    - 'Burn Together' resolve, causa 5 de dano ao jogador GOLGARI (10 de vida total) e sacrifica 'Heartfire Hero', adicionando sua triggered ability ao stack
+    - A triggered ability é resolvida com o jogador GOLGARI como alvo, causando 5 de dano (5 de vida total)
+- Encerra o turno
+(3 cartas na mão)
+
+TURNO 3 - GOLGARI
+- Joga 'Bloodletter of Aclazotz'
+- Ataca com 'Unstoppable Slasher'
+    - 'Unstoppable Slasher' causa 4 de dano ao jogador MONO RED (pois 'Bloodletter of Aclazotz' está em campo) e adiciona sua triggered ability ao stack
+    - A triggered ability é resolvida e o jogador MONO RED perde toda sua vida (pois 'Bloodletter of Aclazotz' está em campo)
+
+Fim do jogo, jogador GOLGARI vence
