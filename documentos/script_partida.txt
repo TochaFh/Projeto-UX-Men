@@ -1,6 +1,6 @@
 Como teremos poucas cartas, não vou representar os jogadores jogando terrenos.
 Vamos supor que em todo turno um terreno untapped e que fornece todas as cores
-de mana de cada deck é jogado.
+de mana de cada deck que é jogado.
 
 Nessa partida temos 2 jogadores, o primeiro com um deck mono red aggro e o segundo
 com um deck verde/preto (golgari) com ramp e combo
@@ -42,3 +42,14 @@ TURNO 3 - GOLGARI
     - A triggered ability é resolvida e o jogador MONO RED perde toda sua vida (pois 'Bloodletter of Aclazotz' está em campo)
 
 Fim do jogo, jogador GOLGARI vence
+
+Cartas utilizadas:
+- MONO RED:
+    - 'Heartfire Hero' (https://cards.scryfall.io/large/front/4/8/48ace959-66b2-40c8-9bff-fd7ed9c99a82.jpg?1738269538)
+    - 'Monstrous Rage' (https://cards.scryfall.io/large/front/e/e/eef5a0ae-5907-42c9-a097-3f973737e392.jpg?1731516167)
+    - 'Burn Together' (https://cards.scryfall.io/large/front/7/7/770ee3da-d33e-466f-9a2e-ad2d08ef5012.jpg?1692939554)
+
+- GOLGARI:
+    - 'Llanowar Elves' (https://cards.scryfall.io/large/front/6/a/6a0b230b-d391-4998-a3f7-7b158a0ec2cd.jpg?1731652605)
+    - 'Unstoppable Slasher' (https://cards.scryfall.io/large/front/c/7/c78da035-6b5b-4136-9ab6-f622b64fdc54.jpg?1726286292)
+    - 'Bloodletter of Aclazotz' (https://cards.scryfall.io/large/front/d/4/d4f6027a-003a-4f9d-929a-0b6da1fa42c9.jpg?1699044094)
