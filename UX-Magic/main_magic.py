@@ -1,5 +1,5 @@
-from carta_magic import CartaMagic, TipoCarta
-from jogador import Jogador
+from magic_logic.carta_magic import CartaMagic, TipoCarta
+from magic_logic.jogador import Jogador
 from _placeholders_ import instanciar_carta
 
 ID_to_card = dict()
