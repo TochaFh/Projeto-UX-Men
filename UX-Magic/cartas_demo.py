@@ -52,3 +52,5 @@ BloodletterOfAclazotz = CartaMagic(
     poder_base=2,
     resistencia_base=4
     )
+
+CardList = [LlanowarElves, UnstoppableSlasher, BloodletterOfAclazotz, HeartfireHero, MonstrousRage, BurnTogether]
