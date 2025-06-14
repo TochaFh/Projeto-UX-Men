@@ -14,7 +14,7 @@ class TipoCarta(Enum):
 @dataclass
 class CartaMagic:
     nome: str
-    custo: str
+    custo: int
     tipo: TipoCarta
     descricao: str
     poder_base: int = 0

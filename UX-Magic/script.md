@@ -1,1 +1,0 @@
-# Roteiro de jogo
