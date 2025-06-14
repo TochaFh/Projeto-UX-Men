@@ -1,6 +1,4 @@
 import tkinter as tk
-import serial
-import threading
 from comunica_rasp import SerialReader
 
 
