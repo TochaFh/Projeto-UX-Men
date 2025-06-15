@@ -1,6 +1,8 @@
 from enum import Enum
 
 class GameState(Enum):
+    INVALID = (-1, -1)
+
     START = (0, 0)
 
     RDC_1_0 = (1, 0)
