@@ -3,7 +3,6 @@ from comunica_rasp import SerialReader
 _ID = {}
 id_count = 0
 
-
 class UXSystem:
     def __init__(self):
         self.serial_thread = None
@@ -12,6 +11,12 @@ class UXSystem:
         self.ON_B_VERMELHO = []
         self.ON_B_AZUL = []
 
+    def clear_all_callbacks(self):
+        self.ON_RFID.clear()
+        self.ON_LEITURA.clear()
+        self.ON_B_VERMELHO.clear()
+        self.ON_B_AZUL.clear()
+    
     # ID detectado no modo PADRÃO
     def _on_rd(self, rfid):
         global id_count

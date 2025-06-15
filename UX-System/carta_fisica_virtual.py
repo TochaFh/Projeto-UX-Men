@@ -1,3 +1,7 @@
+# acabamos movendo essa parte do código para a lógica do magic
+# seriam utilities legais pro UX-System ter no futuro para ser reaproveitado em outros jogos
+# mas por enquanto ta bão assim
+
 class CartaGenerica:
     cartas_em_uso = {}
 
