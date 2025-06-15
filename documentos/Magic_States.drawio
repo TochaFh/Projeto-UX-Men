@@ -250,15 +250,6 @@
         <mxCell id="U-rhy0H6Ldnbkr2NM6ow-70" value="(aqui deveria ter a possibilidade de bloquear, mas isso não estará incluso na nossa demo)" style="text;html=1;align=center;verticalAlign=middle;resizable=0;points=[];autosize=1;strokeColor=none;fillColor=none;" vertex="1" parent="WIyWlLk6GJQsqaUBKTNV-1">
           <mxGeometry x="220" y="985" width="500" height="30" as="geometry" />
         </mxCell>
-        <mxCell id="U-rhy0H6Ldnbkr2NM6ow-72" value="" style="rounded=1;whiteSpace=wrap;html=1;" vertex="1" parent="WIyWlLk6GJQsqaUBKTNV-1">
-          <mxGeometry x="320" y="800" width="120" height="60" as="geometry" />
-        </mxCell>
-        <mxCell id="U-rhy0H6Ldnbkr2NM6ow-74" value="" style="rounded=1;whiteSpace=wrap;html=1;" vertex="1" parent="WIyWlLk6GJQsqaUBKTNV-1">
-          <mxGeometry x="320" y="800" width="120" height="60" as="geometry" />
-        </mxCell>
-        <mxCell id="U-rhy0H6Ldnbkr2NM6ow-76" value="" style="rounded=1;whiteSpace=wrap;html=1;" vertex="1" parent="WIyWlLk6GJQsqaUBKTNV-1">
-          <mxGeometry x="320" y="800" width="120" height="60" as="geometry" />
-        </mxCell>
         <mxCell id="U-rhy0H6Ldnbkr2NM6ow-81" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;entryX=1;entryY=0.5;entryDx=0;entryDy=0;" edge="1" parent="WIyWlLk6GJQsqaUBKTNV-1" source="U-rhy0H6Ldnbkr2NM6ow-78" target="U-rhy0H6Ldnbkr2NM6ow-30">
           <mxGeometry relative="1" as="geometry">
             <Array as="points">

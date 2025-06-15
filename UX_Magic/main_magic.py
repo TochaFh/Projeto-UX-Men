@@ -1,7 +1,6 @@
 from magic_logic.carta_magic import CartaMagic, TipoCarta
 from magic_logic.jogador import Jogador, IDJogador
-from cartas_demo import CardList
-from _placeholders_ import ler_rfid, esperar_inicio_partida
+from cartas_demo import *
 from game_states import GameState
 from uxsystem import UXSystem
 
@@ -14,7 +13,7 @@ def setup(_uxs: UXSystem):
     player1 = Jogador(IDJogador.GOLGARI)
     player2 = Jogador(IDJogador.RED)
     players = [player1, player2]
-    current_player = 0
+    current_player = -1
     current_state = GameState.START
     atacantes: list[CartaMagic] = []
 
@@ -45,8 +44,8 @@ def iniciar_turno():
     global players, current_player, uxs, main_count, atacantes
     atacantes.clear()
     main_count = 1
-    players[current_player].iniciar_turno()
     current_player = (current_player + 1) % 2
+    players[current_player].iniciar_turno()
 
     # TODO: informar início do turno do jogador e pedir pra ele desvirar seus permanentes
 
@@ -116,13 +115,23 @@ def declare_blocks():
     uxs.ON_B_AZUL.append(resultados_combate)
 
 def resultados_combate():
-    global uxs, atacantes
+    global uxs, atacantes, main_count
     dano_causado = 0
     for carta in atacantes:
-        
+        dano_causado += carta.poder
+    
+    # TODO: informar ao jogador o resultado do combate
+
+    main_count = 2
+
+    uxs.clear_all_callbacks()
+    uxs.ON_B_AZUL.append(main_phase)
 
 def conjurar_magica(carta):
-    pass
+    jogador_atual = players[current_player]
+    match carta:
+        case LlanowarElves:
+            
 
 def ativar_habilidade(carta):
     pass
