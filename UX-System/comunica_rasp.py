@@ -45,6 +45,7 @@ class SerialReader(threading.Thread):
         while True:
             try:
                 with serial.Serial(SERIAL_PORT, BAUD_RATE, timeout=1) as ser:
+                    print(f"## Conectado à porta serial {SERIAL_PORT}!")
                     while self.running:
                         linha = ser.readline().decode('utf-8').strip()
                         if not linha:
@@ -61,8 +62,8 @@ class SerialReader(threading.Thread):
                                 self.bb()
 
             except serial.SerialException as e:
-                print(f"Erro ao abrir a porta serial: {e}")
-                input("Pressione Enter para tentar novamente...")
+                print(f"** Erro ao abrir a porta serial: {e}")
+                input("** Pressione Enter para tentar novamente...")
 
     def stop(self):
         self.running = False

@@ -5,8 +5,6 @@ class CartaGenerica:
         self.id_rfid = id_rfid
         self.tipo_carta = tipo_carta
         self.id_jogador = id_jogador
-        
-        if id_jogador in cartas_em_uso;
             
 
     def __str__(self):

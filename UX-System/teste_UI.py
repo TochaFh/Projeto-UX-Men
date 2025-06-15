@@ -1,6 +1,4 @@
 import tkinter as tk
-import serial
-import threading
 from comunica_rasp import SerialReader
 
 
@@ -16,7 +14,7 @@ msg_var = tk.StringVar()
 label = tk.Label(root, textvariable=msg_var)
 label.pack(padx=20, pady=20)
 
-serial_thread = SerialReader(on_serial_message)
+serial_thread = SerialReader(on_serial_message, on_serial_message, on_serial_message, on_serial_message)
 serial_thread.start()
 
 def on_close():
