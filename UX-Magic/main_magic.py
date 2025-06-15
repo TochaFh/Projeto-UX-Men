@@ -17,6 +17,7 @@ def demo_magic():
     for card in CardList[3:]:
         ID_to_card[ler_rfid()] = (card, player2)
 
+    # INICIO DA PARTIDA
     esperar_inicio_partida()
 
     while True:
