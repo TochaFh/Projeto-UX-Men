@@ -2,7 +2,7 @@ import tkinter as tk
 from PIL import Image, ImageTk
 
 # Caminho da imagem de fundo
-BACKGROUND_IMAGE = "UX-UI/images/magic_BG.png"
+BACKGROUND_IMAGE = "UX_UI/images/magic_BG.png"
 
 janela = tk.Tk()
 #janela.attributes('-fullscreen', True)  # Janela em tela cheia
