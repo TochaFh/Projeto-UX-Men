@@ -161,25 +161,57 @@ def conjurar_magica(carta: CartaMagic):
 
         def await_HH(rfid):
             if ID_to_card[rfid] == HeartfireHero:
-                MR_trigger_HH()
+                MR_trigger_HH(ID_to_card[rfid])
 
         uxs.clear_all_callbacks()
         uxs.ON_RFID.append(await_HH)
     elif carta == BurnTogether:
-        pass
+        # TODO: informar que está aguardando uma criatura alvo
+
+        def await_HH(rfid):
+            if ID_to_card[rfid] == HeartfireHero:
+                # TODO: informar que está aguardando jogador alvo
+
+                uxs.clear_all_callbacks()
+                uxs.ON_RFID.append(BT_getplayer)
+
+        uxs.clear_all_callbacks()
+        uxs.ON_RFID.append(await_HH)
 
 def MR_trigger_HH():
-    pass
+    global uxs
+    # TODO: informar ao jogador sobre o trigger sendo colocado no stack
+    uxs.clear_all_callbacks()
+    uxs.ON_B_AZUL.append(MR_addcounters_HH)
 
 def MR_addcounters_HH():
-    pass
+    HeartfireHero.poder_base += 1
+    HeartfireHero.resistencia_base += 1
+
+    # TODO: informar ao jogador que Heartfire Hero recebeu um contador +1/+1
+
+    uxs.clear_all_callbacks()
+    uxs.ON_B_AZUL.append(MR_createtoken_HH)
 
 def MR_createtoken_HH():
-    pass
+    HeartfireHero.poder_base += 2
+
+    # TODO: informar ao jogador que o monster role token foi criado e atrelado a heartfire hero. avisar que o stack acabou
+
+    uxs.clear_all_callbacks()
+    uxs.ON_B_AZUL.append(main_phase)
+
+def BT_getplayer(rfid):
+    if rfid not in ID_to_player.keys():
+        # TODO: ID invalido
+        return
+    
+    alvo: Jogador = ID_to_player[rfid]
+    alvo.vida -= 
+
+    uxs.clear_all_callbacks()
+    uxs.ON_B_AZUL.append()
 
 # TODO: remover pass
-def escolher_criatura_alvo():
-    pass
-
 def ativar_habilidade(carta):
     pass
