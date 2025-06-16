@@ -1,6 +1,6 @@
 <mxfile host="app.diagrams.net" agent="Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/137.0.0.0 Safari/537.36" version="27.1.5">
   <diagram id="C5RBs43oDa-KdzZeNtuy" name="Page-1">
-    <mxGraphModel dx="983" dy="547" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="827" pageHeight="1169" math="0" shadow="0">
+    <mxGraphModel dx="1584" dy="2050" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="827" pageHeight="1169" math="0" shadow="0">
       <root>
         <mxCell id="WIyWlLk6GJQsqaUBKTNV-0" />
         <mxCell id="WIyWlLk6GJQsqaUBKTNV-1" parent="WIyWlLk6GJQsqaUBKTNV-0" />
@@ -8,7 +8,7 @@
           <mxGeometry relative="1" as="geometry" />
         </mxCell>
         <mxCell id="U-rhy0H6Ldnbkr2NM6ow-0" value="Start" style="ellipse;whiteSpace=wrap;html=1;aspect=fixed;fillColor=#f8cecc;strokeColor=#b85450;" parent="WIyWlLk6GJQsqaUBKTNV-1" vertex="1">
-          <mxGeometry x="40" y="10" width="80" height="80" as="geometry" />
+          <mxGeometry x="40" y="-128" width="80" height="80" as="geometry" />
         </mxCell>
         <mxCell id="U-rhy0H6Ldnbkr2NM6ow-7" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;entryX=0.5;entryY=0;entryDx=0;entryDy=0;" parent="WIyWlLk6GJQsqaUBKTNV-1" source="U-rhy0H6Ldnbkr2NM6ow-1" target="U-rhy0H6Ldnbkr2NM6ow-5" edge="1">
           <mxGeometry relative="1" as="geometry" />
@@ -17,7 +17,7 @@
           <mxGeometry x="20" y="220" width="120" height="60" as="geometry" />
         </mxCell>
         <mxCell id="U-rhy0H6Ldnbkr2NM6ow-3" value="Seleção da demo do magic" style="text;html=1;align=center;verticalAlign=middle;resizable=0;points=[];autosize=1;strokeColor=none;fillColor=none;" parent="WIyWlLk6GJQsqaUBKTNV-1" vertex="1">
-          <mxGeometry x="85" y="100" width="170" height="30" as="geometry" />
+          <mxGeometry x="85" y="-40" width="170" height="30" as="geometry" />
         </mxCell>
         <mxCell id="U-rhy0H6Ldnbkr2NM6ow-8" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;entryX=0.5;entryY=0;entryDx=0;entryDy=0;" parent="WIyWlLk6GJQsqaUBKTNV-1" source="U-rhy0H6Ldnbkr2NM6ow-5" target="U-rhy0H6Ldnbkr2NM6ow-6" edge="1">
           <mxGeometry relative="1" as="geometry" />
@@ -37,12 +37,12 @@
         <mxCell id="U-rhy0H6Ldnbkr2NM6ow-11" value="Leitura de um RFID ainda não lido" style="text;html=1;align=center;verticalAlign=middle;resizable=0;points=[];autosize=1;strokeColor=none;fillColor=none;" parent="WIyWlLk6GJQsqaUBKTNV-1" vertex="1">
           <mxGeometry x="70" y="370" width="210" height="30" as="geometry" />
         </mxCell>
-        <mxCell id="U-rhy0H6Ldnbkr2NM6ow-25" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;" parent="WIyWlLk6GJQsqaUBKTNV-1" source="U-rhy0H6Ldnbkr2NM6ow-12" edge="1">
+        <mxCell id="U-rhy0H6Ldnbkr2NM6ow-25" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;entryX=0.5;entryY=0;entryDx=0;entryDy=0;" parent="WIyWlLk6GJQsqaUBKTNV-1" source="U-rhy0H6Ldnbkr2NM6ow-12" target="U-rhy0H6Ldnbkr2NM6ow-16" edge="1">
           <mxGeometry relative="1" as="geometry">
             <Array as="points">
               <mxPoint x="290" y="520" />
-              <mxPoint x="290" y="80" />
-              <mxPoint x="370" y="80" />
+              <mxPoint x="290" y="190" />
+              <mxPoint x="370" y="190" />
             </Array>
             <mxPoint x="370" y="130" as="targetPoint" />
           </mxGeometry>
@@ -175,8 +175,8 @@
         <mxCell id="U-rhy0H6Ldnbkr2NM6ow-44" value="Leitura de carta que está&amp;nbsp;&lt;div&gt;na mão do jogador&lt;/div&gt;" style="text;html=1;align=center;verticalAlign=middle;resizable=0;points=[];autosize=1;strokeColor=none;fillColor=none;" parent="WIyWlLk6GJQsqaUBKTNV-1" vertex="1">
           <mxGeometry x="350" y="700" width="160" height="40" as="geometry" />
         </mxCell>
-        <mxCell id="U-rhy0H6Ldnbkr2NM6ow-45" value="Leitura de carta que está&amp;nbsp;&lt;span style=&quot;background-color: transparent; color: light-dark(rgb(0, 0, 0), rgb(255, 255, 255));&quot;&gt;no campo de&amp;nbsp;&lt;/span&gt;&lt;div&gt;&lt;span style=&quot;background-color: transparent; color: light-dark(rgb(0, 0, 0), rgb(255, 255, 255));&quot;&gt;batalha e tem habilidades ativas&lt;/span&gt;&lt;/div&gt;" style="text;html=1;align=center;verticalAlign=middle;resizable=0;points=[];autosize=1;strokeColor=none;fillColor=none;" parent="WIyWlLk6GJQsqaUBKTNV-1" vertex="1">
-          <mxGeometry x="310" y="790" width="230" height="40" as="geometry" />
+        <mxCell id="U-rhy0H6Ldnbkr2NM6ow-45" value="Leitura de carta que está&amp;nbsp;&lt;span style=&quot;background-color: transparent; color: light-dark(rgb(0, 0, 0), rgb(255, 255, 255));&quot;&gt;no campo&amp;nbsp;&lt;/span&gt;&lt;div&gt;&lt;span style=&quot;background-color: transparent; color: light-dark(rgb(0, 0, 0), rgb(255, 255, 255));&quot;&gt;de&amp;nbsp;&lt;/span&gt;&lt;span style=&quot;background-color: transparent; color: light-dark(rgb(0, 0, 0), rgb(255, 255, 255));&quot;&gt;batalha e tem habilidades&lt;/span&gt;&lt;/div&gt;&lt;div&gt;&lt;span style=&quot;background-color: transparent; color: light-dark(rgb(0, 0, 0), rgb(255, 255, 255));&quot;&gt;ativas (Llanowar Elves)&lt;/span&gt;&lt;/div&gt;" style="text;html=1;align=center;verticalAlign=middle;resizable=0;points=[];autosize=1;strokeColor=none;fillColor=none;" parent="WIyWlLk6GJQsqaUBKTNV-1" vertex="1">
+          <mxGeometry x="315" y="780" width="220" height="60" as="geometry" />
         </mxCell>
         <mxCell id="U-rhy0H6Ldnbkr2NM6ow-50" value="Jogador passa prioridade e&lt;div&gt;é a primeira main phase&lt;/div&gt;" style="text;html=1;align=center;verticalAlign=middle;resizable=0;points=[];autosize=1;strokeColor=none;fillColor=none;" parent="WIyWlLk6GJQsqaUBKTNV-1" vertex="1">
           <mxGeometry x="130" y="790" width="170" height="40" as="geometry" />
@@ -274,7 +274,11 @@
           </mxGeometry>
         </mxCell>
         <mxCell id="AvsIWTUZXzp0jRkqoMEe-23" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;" edge="1" parent="WIyWlLk6GJQsqaUBKTNV-1" source="AvsIWTUZXzp0jRkqoMEe-0" target="AvsIWTUZXzp0jRkqoMEe-22">
-          <mxGeometry relative="1" as="geometry" />
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="1350" y="60" />
+            </Array>
+          </mxGeometry>
         </mxCell>
         <mxCell id="AvsIWTUZXzp0jRkqoMEe-0" value="Conjurar uma mágica" style="rounded=1;whiteSpace=wrap;html=1;" vertex="1" parent="WIyWlLk6GJQsqaUBKTNV-1">
           <mxGeometry x="930" y="30" width="120" height="60" as="geometry" />
@@ -330,26 +334,80 @@
         <mxCell id="AvsIWTUZXzp0jRkqoMEe-20" value="botão azul" style="text;html=1;align=center;verticalAlign=middle;resizable=0;points=[];autosize=1;strokeColor=none;fillColor=none;" vertex="1" parent="WIyWlLk6GJQsqaUBKTNV-1">
           <mxGeometry x="910" y="490" width="80" height="30" as="geometry" />
         </mxCell>
+        <mxCell id="AvsIWTUZXzp0jRkqoMEe-35" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;" edge="1" parent="WIyWlLk6GJQsqaUBKTNV-1" source="AvsIWTUZXzp0jRkqoMEe-22" target="AvsIWTUZXzp0jRkqoMEe-34">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
         <mxCell id="AvsIWTUZXzp0jRkqoMEe-22" value="Esperando criatura alvo (Heartfire Hero)" style="whiteSpace=wrap;html=1;rounded=1;" vertex="1" parent="WIyWlLk6GJQsqaUBKTNV-1">
-          <mxGeometry x="1300" y="180" width="120" height="60" as="geometry" />
+          <mxGeometry x="1290" y="85" width="120" height="60" as="geometry" />
         </mxCell>
         <mxCell id="AvsIWTUZXzp0jRkqoMEe-24" value="É Burn Together" style="text;html=1;align=center;verticalAlign=middle;resizable=0;points=[];autosize=1;strokeColor=none;fillColor=none;" vertex="1" parent="WIyWlLk6GJQsqaUBKTNV-1">
           <mxGeometry x="1170" y="30" width="110" height="30" as="geometry" />
         </mxCell>
-        <mxCell id="AvsIWTUZXzp0jRkqoMEe-28" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;entryX=0.5;entryY=0;entryDx=0;entryDy=0;" edge="1" parent="WIyWlLk6GJQsqaUBKTNV-1" source="AvsIWTUZXzp0jRkqoMEe-26" target="U-rhy0H6Ldnbkr2NM6ow-1">
+        <mxCell id="AvsIWTUZXzp0jRkqoMEe-53" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;entryX=0.5;entryY=0;entryDx=0;entryDy=0;" edge="1" parent="WIyWlLk6GJQsqaUBKTNV-1" source="AvsIWTUZXzp0jRkqoMEe-26" target="AvsIWTUZXzp0jRkqoMEe-52">
           <mxGeometry relative="1" as="geometry" />
         </mxCell>
         <mxCell id="AvsIWTUZXzp0jRkqoMEe-26" value="&quot;Jogador 1, passe seu identificador&quot;" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#f8cecc;strokeColor=#b85450;" vertex="1" parent="WIyWlLk6GJQsqaUBKTNV-1">
-          <mxGeometry x="20" y="138" width="120" height="60" as="geometry" />
+          <mxGeometry x="20" width="120" height="60" as="geometry" />
         </mxCell>
         <mxCell id="AvsIWTUZXzp0jRkqoMEe-29" value="Leitura de um RFID ainda não lido" style="text;html=1;align=center;verticalAlign=middle;resizable=0;points=[];autosize=1;strokeColor=none;fillColor=none;" vertex="1" parent="WIyWlLk6GJQsqaUBKTNV-1">
-          <mxGeometry x="85" y="195" width="210" height="30" as="geometry" />
+          <mxGeometry x="80" y="180" width="210" height="30" as="geometry" />
         </mxCell>
-        <mxCell id="AvsIWTUZXzp0jRkqoMEe-32" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;entryX=0.5;entryY=0;entryDx=0;entryDy=0;" edge="1" parent="WIyWlLk6GJQsqaUBKTNV-1" source="AvsIWTUZXzp0jRkqoMEe-30" target="U-rhy0H6Ldnbkr2NM6ow-16">
+        <mxCell id="AvsIWTUZXzp0jRkqoMEe-38" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;" edge="1" parent="WIyWlLk6GJQsqaUBKTNV-1" source="AvsIWTUZXzp0jRkqoMEe-34" target="AvsIWTUZXzp0jRkqoMEe-37">
           <mxGeometry relative="1" as="geometry" />
         </mxCell>
-        <mxCell id="AvsIWTUZXzp0jRkqoMEe-30" value="&quot;Jogador 2, passe seu identificador&quot;" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#f8cecc;strokeColor=#b85450;" vertex="1" parent="WIyWlLk6GJQsqaUBKTNV-1">
-          <mxGeometry x="310" y="130" width="120" height="60" as="geometry" />
+        <mxCell id="AvsIWTUZXzp0jRkqoMEe-34" value="Esperando jogador alvo (Golgari)" style="whiteSpace=wrap;html=1;rounded=1;" vertex="1" parent="WIyWlLk6GJQsqaUBKTNV-1">
+          <mxGeometry x="1290" y="175" width="120" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="AvsIWTUZXzp0jRkqoMEe-36" value="Leitura de Heartfire Hero" style="text;html=1;align=center;verticalAlign=middle;resizable=0;points=[];autosize=1;strokeColor=none;fillColor=none;" vertex="1" parent="WIyWlLk6GJQsqaUBKTNV-1">
+          <mxGeometry x="1340" y="145" width="160" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="AvsIWTUZXzp0jRkqoMEe-43" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;" edge="1" parent="WIyWlLk6GJQsqaUBKTNV-1" source="AvsIWTUZXzp0jRkqoMEe-37" target="AvsIWTUZXzp0jRkqoMEe-42">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="AvsIWTUZXzp0jRkqoMEe-37" value="Causa dano ao jogador Golgari, informa vida restante" style="whiteSpace=wrap;html=1;rounded=1;" vertex="1" parent="WIyWlLk6GJQsqaUBKTNV-1">
+          <mxGeometry x="1290" y="265" width="120" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="AvsIWTUZXzp0jRkqoMEe-40" value="Leitura de Jogador Golgari" style="text;html=1;align=center;verticalAlign=middle;resizable=0;points=[];autosize=1;strokeColor=none;fillColor=none;" vertex="1" parent="WIyWlLk6GJQsqaUBKTNV-1">
+          <mxGeometry x="1340" y="235" width="170" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="AvsIWTUZXzp0jRkqoMEe-46" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;entryX=0.5;entryY=0;entryDx=0;entryDy=0;" edge="1" parent="WIyWlLk6GJQsqaUBKTNV-1" source="AvsIWTUZXzp0jRkqoMEe-42" target="AvsIWTUZXzp0jRkqoMEe-45">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="AvsIWTUZXzp0jRkqoMEe-42" value="Informa sobre o trigger de morte de Heartfire Hero. Causa dano ao jogador Golgari. Informa a vida restante" style="whiteSpace=wrap;html=1;rounded=1;" vertex="1" parent="WIyWlLk6GJQsqaUBKTNV-1">
+          <mxGeometry x="1290" y="355" width="120" height="85" as="geometry" />
+        </mxCell>
+        <mxCell id="AvsIWTUZXzp0jRkqoMEe-44" value="botão azul" style="text;html=1;align=center;verticalAlign=middle;resizable=0;points=[];autosize=1;strokeColor=none;fillColor=none;" vertex="1" parent="WIyWlLk6GJQsqaUBKTNV-1">
+          <mxGeometry x="1340" y="325" width="80" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="AvsIWTUZXzp0jRkqoMEe-48" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;" edge="1" parent="WIyWlLk6GJQsqaUBKTNV-1" source="AvsIWTUZXzp0jRkqoMEe-45">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="900" y="330.0000000000001" as="targetPoint" />
+            <Array as="points">
+              <mxPoint x="1350" y="570" />
+              <mxPoint x="900" y="570" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="AvsIWTUZXzp0jRkqoMEe-45" value="Avisa que acabaram os efeitos do stack" style="rounded=1;whiteSpace=wrap;html=1;" vertex="1" parent="WIyWlLk6GJQsqaUBKTNV-1">
+          <mxGeometry x="1290" y="465" width="120" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="AvsIWTUZXzp0jRkqoMEe-47" value="botão azul" style="text;html=1;align=center;verticalAlign=middle;resizable=0;points=[];autosize=1;strokeColor=none;fillColor=none;" vertex="1" parent="WIyWlLk6GJQsqaUBKTNV-1">
+          <mxGeometry x="1340" y="435" width="80" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="AvsIWTUZXzp0jRkqoMEe-49" value="botão azul" style="text;html=1;align=center;verticalAlign=middle;resizable=0;points=[];autosize=1;strokeColor=none;fillColor=none;" vertex="1" parent="WIyWlLk6GJQsqaUBKTNV-1">
+          <mxGeometry x="1340" y="540" width="80" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="AvsIWTUZXzp0jRkqoMEe-50" value="Ativar uma habilidade" style="rounded=1;whiteSpace=wrap;html=1;" vertex="1" parent="WIyWlLk6GJQsqaUBKTNV-1">
+          <mxGeometry x="900" y="675" width="120" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="AvsIWTUZXzp0jRkqoMEe-54" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;entryX=0.5;entryY=0;entryDx=0;entryDy=0;" edge="1" parent="WIyWlLk6GJQsqaUBKTNV-1" source="AvsIWTUZXzp0jRkqoMEe-52" target="U-rhy0H6Ldnbkr2NM6ow-1">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="AvsIWTUZXzp0jRkqoMEe-52" value="&quot;Jogador 2, passe seu identificador&quot;" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#f8cecc;strokeColor=#b85450;" vertex="1" parent="WIyWlLk6GJQsqaUBKTNV-1">
+          <mxGeometry x="20" y="108" width="120" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="AvsIWTUZXzp0jRkqoMEe-55" value="Leitura de um RFID ainda não lido" style="text;html=1;align=center;verticalAlign=middle;resizable=0;points=[];autosize=1;strokeColor=none;fillColor=none;" vertex="1" parent="WIyWlLk6GJQsqaUBKTNV-1">
+          <mxGeometry x="80" y="70" width="210" height="30" as="geometry" />
         </mxCell>
       </root>
     </mxGraphModel>

@@ -5,7 +5,8 @@ from UX_System.uxsystem import UXSystem
 from UX_Magic.magic_ui import TextHolder
 
 def setup(_uxs: UXSystem, holder: TextHolder):
-    global ID_to_card, player1, player2, players, current_player, p1cards, p2cards, uxs, main_count, atacantes, ID_to_player, ui
+    global ID_to_card, player1, player2, players, current_player, p1cards, p2cards, uxs, main_count, atacantes, ID_to_player, ui, player_count
+    player_count = 0
     main_count = 1
     uxs = _uxs
     ID_to_card = dict()
@@ -21,10 +22,18 @@ def setup(_uxs: UXSystem, holder: TextHolder):
 
     ui.title.set("Magic: The Gathering")
     ui.msg1.set("Identificação de jogadores")
-    ui.msg2.set("- Jogador 1, passe seu identificador")
+    ui.warning.set("- Jogador 1, passe seu identificador")
 
     uxs.ON_RFID.append(associar_cartas)
-    
+
+
+def identificar_player(rfid):
+    global players, player_count, ID_to_player
+    if(player_count == 1):
+        uxs.clear_all_callbacks()
+        uxs.ON_RFID.append(associar_cartas)
+    ID_to_player[rfid] = players[player_count]
+    player_count += 1
 
 def associar_cartas(rfid):
     global ID_to_card, player1, player2, players, current_player, p1cards, p2cards, uxs
@@ -36,9 +45,11 @@ def associar_cartas(rfid):
     if p1cards < 3:
         ID_to_card[rfid] = (CardList[p1cards], player1)
         player1.cards_hand.append(CardList[p1cards])
+        p1cards += 1
     elif p2cards < 3:
         ID_to_card[rfid] = (CardList[3 + p2cards], player2)
         player1.cards_hand.append(CardList[3 + p2cards])
+        p2cards += 1
     else:
         uxs.clear_all_callbacks()
         # Esperando início do jogo
@@ -132,20 +143,39 @@ def resultados_combate():
     uxs.ON_B_AZUL.append(main_phase)
 
 def conjurar_magica(carta: CartaMagic):
-    global players
+    global players, uxs
     jogador_atual = players[current_player]
+    if jogador_atual.mana_extra + jogador_atual.terrenos_desvirados >= carta.custo:      
+        jogador_atual.consumir_mana(carta.custo)
+    else:
+        # TODO: avisar ao jogador que ele não tem mana o suficiente
+        uxs.clear_all_callbacks()
+        uxs.ON_B_AZUL.append(main_phase)
+        return
+    
     if carta.tipo == TipoCarta.CRIATURA:
-        if jogador_atual.mana_extra + jogador_atual.terrenos_desvirados >= carta.custo:      
-            jogador_atual.consumir_mana(carta.custo)
-            jogador_atual.cards_bf.append(carta)
-        else:
-            # TODO: avisar ao jogador que ele não tem mana o suficiente
-            pass
-    # TODO: remover passes
+        jogador_atual.cards_bf.append(carta)
+
     elif carta == MonstrousRage:
-        pass
+        # TODO: informar que está aguardando uma criatura alvo
+
+        def await_HH(rfid):
+            if ID_to_card[rfid] == HeartfireHero:
+                MR_trigger_HH()
+
+        uxs.clear_all_callbacks()
+        uxs.ON_RFID.append(await_HH)
     elif carta == BurnTogether:
         pass
+
+def MR_trigger_HH():
+    pass
+
+def MR_addcounters_HH():
+    pass
+
+def MR_createtoken_HH():
+    pass
 
 # TODO: remover pass
 def escolher_criatura_alvo():
