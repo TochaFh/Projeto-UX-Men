@@ -19,6 +19,8 @@ background_label.place(x=0, y=0, relwidth=1, relheight=1)
 
 # Função para exibir uma mensagem quando o botão for clicado
 def exibir_mensagem():
+  print("Muito obrigado por clicar!")
+  # u i i a i u u i i a
   print("O botão foi clicado!")
 
 janela.title("Posicionamento com Grid")
