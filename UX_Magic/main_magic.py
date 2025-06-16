@@ -168,17 +168,21 @@ def declare_blocks():
     uxs.ON_B_AZUL.append(resultados_combate)
 
 def resultados_combate():
-    global uxs, atacantes, main_count
+    global uxs, atacantes, main_count, players
     dano_causado = 0
     for carta in atacantes:
         dano_causado += carta.poder
 
+    # TODO: informar ao jogador o resultado do combate
+
     if BloodletterOfAclazotz in players[current_player].cards_bf:
         players[(current_player + 1)%2].vida =  0
+        uxs.clear_all_callbacks()
+        uxs.ON_B_AZUL.append(fim_jogo)
+        return
     else:
         players[(current_player + 1)%2].vida -= dano_causado
     
-    # TODO: informar ao jogador o resultado do combate
 
     main_count = 2
 
@@ -265,8 +269,32 @@ def BT_hh_death_trigger():
 
     # TODO: resolução do trigger, dano ao jogador golgari
 
+    uxs.clear_all_callbacks()
+    uxs.ON_B_AZUL.append(main_phase)
 
+def fim_jogo():
+    # TODO: informar que o jogador golgari venceu
+    uxs.clear_all_callbacks()
+    # TODO: Voltar à tela inicial do UX System
 
 # TODO: remover pass
 def ativar_habilidade(carta):
-    pass
+    if carta != LlanowarElves:
+        # TODO: informar ao jogador que a carta não tem habilidades
+        uxs.clear_all_callbacks()
+        uxs.ON_B_AZUL.append(main_phase)
+        return
+    
+    # TODO: perguntar o jogador se ele quer ativar a habilidade de llanowar elvess
+    uxs.clear_all_callbacks()
+
+    def habilidade():
+        player_golgari.mana_extra += 1
+
+        # TODO: informar ao jogador golgari que ele recebeu uma mana extra
+
+        uxs.clear_all_callbacks()
+        uxs.ON_B_AZUL(main_phase)
+    
+    uxs.ON_B_AZUL(habilidade)
+    uxs.ON_B_VERMELHO(main_phase)
