@@ -1,11 +1,10 @@
 from magic_logic.carta_magic import CartaMagic, TipoCarta
 from magic_logic.jogador import Jogador, IDJogador
 from cartas_demo import *
-from game_states import GameState
-from uxsystem import UXSystem
+from UX_System.uxsystem import UXSystem
 
 def setup(_uxs: UXSystem):
-    global ID_to_card, player1, player2, players, current_player, current_state, p1cards, p2cards, uxs, main_count, atacantes
+    global ID_to_card, player1, player2, players, current_player, p1cards, p2cards, uxs, main_count, atacantes
     main_count = 1
     uxs = _uxs
     ID_to_card = dict()
@@ -14,7 +13,6 @@ def setup(_uxs: UXSystem):
     player2 = Jogador(IDJogador.RED)
     players = [player1, player2]
     current_player = -1
-    current_state = GameState.START
     atacantes: list[CartaMagic] = []
 
     # TODO: Pedir pros jogadores lerem as cartas
@@ -23,7 +21,7 @@ def setup(_uxs: UXSystem):
     
 
 def associar_cartas(rfid):
-    global ID_to_card, player1, player2, players, current_player, current_state, p1cards, p2cards, uxs
+    global ID_to_card, player1, player2, players, current_player, p1cards, p2cards, uxs
 
     if rfid in ID_to_card.keys():
         # TODO: avisar ao jogador que aquela carta já foi associada
@@ -127,11 +125,21 @@ def resultados_combate():
     uxs.clear_all_callbacks()
     uxs.ON_B_AZUL.append(main_phase)
 
-def conjurar_magica(carta):
+def conjurar_magica(carta: CartaMagic):
+    global players
     jogador_atual = players[current_player]
-    match carta:
-        case LlanowarElves:
-            
+    if carta.tipo == TipoCarta.CRIATURA:
+        if jogador_atual.mana_extra + jogador_atual.terrenos_desvirados >= carta.custo:      
+            jogador_atual.consumir_mana(carta.custo)
+            jogador_atual.cards_bf.append(carta)
+        else:
+            # TODO: avisar ao jogador que ele não tem mana o suficiente
+            pass
+    elif carta == MonstrousRage:
+
+    elif carta == BurnTogether:
+
+def escolher_criatura_alvo
 
 def ativar_habilidade(carta):
     pass

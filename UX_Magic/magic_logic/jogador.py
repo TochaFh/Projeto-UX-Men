@@ -5,6 +5,10 @@ class IDJogador(Enum):
     GOLGARI: str = 'Golgari'
     RED: str = 'Mono Red'
 
+class InvalidManaCost(Exception):
+    def __init__(self, *args):
+        super().__init__(*args)
+
 @dataclass
 class Jogador:
     ID: IDJogador
@@ -21,3 +25,24 @@ class Jogador:
         self.terrenos_desvirados += self.terrenos_virados + 1
         self.terrenos_virados = 0
         self.mana_extra = 0
+    
+    @property
+    def mana_total(self):
+        return self.terrenos_desvirados + self.mana_extra
+    
+    def __virar_terrenos(self, quantidade):
+        self.terrenos_virados += quantidade
+        self.terrenos_desvirados -= quantidade
+    
+    def consumir_mana(self, consumo):
+        if consumo > self.mana_total:
+            raise InvalidManaCost(f"Consumo = {consumo} > {self.mana_total} = Mana")
+
+        if consumo >= self.mana_extra:
+            consumo -= self.mana_extra
+            self.mana_extra = 0
+        else:
+            self.mana_extra -= consumo
+            return
+        
+        self.__virar_terrenos(consumo)

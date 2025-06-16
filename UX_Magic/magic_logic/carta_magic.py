@@ -1,6 +1,7 @@
 from dataclasses import dataclass
 from enum import Enum
 from typing import Any
+from carta_magic import CartaMagic
 
 class TipoCarta(Enum):
     CRIATURA: str = "Criatura"
@@ -23,6 +24,8 @@ class CartaMagic:
     resistencia: int = 0
     iniciativa: bool = False
     golpe_duplo: bool = False
+    targets: list[CartaMagic] = []
+    efeitos: list[function] = []
 
     def __post_init__(self):
         self.poder = self.poder_base
