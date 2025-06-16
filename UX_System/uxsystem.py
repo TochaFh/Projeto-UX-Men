@@ -13,7 +13,7 @@ class UXSystem:
 
     def clear_all_callbacks(self):
         self.ON_RFID.clear()
-        self.ON_LEITURA.clear()
+        #self.ON_LEITURA.clear()
         self.ON_B_VERMELHO.clear()
         self.ON_B_AZUL.clear()
     

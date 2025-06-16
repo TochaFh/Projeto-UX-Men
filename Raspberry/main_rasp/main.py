@@ -53,7 +53,7 @@ def main():
                     print("Rr-"+str(card))
                 else:
                     print("Rd-"+str(card))
-                
+                sleep(2)
         sleep_ms(500)
 
 def pisca():
