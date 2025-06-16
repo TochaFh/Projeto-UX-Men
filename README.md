@@ -1,6 +1,15 @@
 # Projeto UX-Men 🎮✨
 
 Bem-vindo ao repositório do Projeto UX-Men, um projeto de Interface Humano-Computador (IHC) desenvolvido como parte de uma disciplina acadêmica. A ideia central é criar um sistema interativo que auxilie jogos de cartas físicos com o apoio de um "árbitro digital".
+## 👥 Integrantes (ID 1)
+
+- Caique Pinheiro Andrade            – RA: 204677
+- Lucas Rodrigues de Mendonça        - RA: 236800
+- Thiago Augusto de Tulio Nascimento - RA: 252937
+- Rafael Campideli Hoyos             – RA: 175100  
+- Lucas Palacio Almeida              – RA: 236380
+
+  
 📌 Visão Geral
 
 O sistema usa um Raspberry Pi acoplado a um sensor RFID para identificar cartas físicas. Cada carta possui um tag RFID que é lido pelo sistema, permitindo que ele entenda as jogadas que estão acontecendo em tempo real.
