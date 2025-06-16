@@ -1,6 +1,6 @@
 # Projeto UX-Men 🎮✨
 
-Bem-vindo ao repositório do Projeto UX-Men, um projeto de Interface Humano-Computador (IHC) desenvolvido como parte de uma disciplina acadêmica. A ideia central é criar um sistema interativo que auxilie jogos de cartas físicos com o apoio de um "árbitro digital".
+Bem-vindo ao repositório do Projeto UX-Men, um projeto de Interação Humano-Computador (IHC) desenvolvido como parte de uma disciplina acadêmica. A ideia central é criar um sistema interativo que auxilie jogos de cartas físicos com o apoio de um "árbitro digital".
 ## 👥 Integrantes (ID 12)
 
 - Caique Pinheiro Andrade            – RA: 204677
