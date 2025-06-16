@@ -1,4 +1,4 @@
-from comunica_rasp import SerialReader
+from UX_System.comunica_rasp import SerialReader
 
 _ID = {}
 id_count = 0

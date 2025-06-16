@@ -1,0 +1,47 @@
+import tkinter as tk
+from PIL import Image, ImageTk
+
+def setup(janela):
+    global bg_img
+
+    # Caminho da imagem de fundo
+    BACKGROUND_IMAGE = "UX_UI/images/magic_BG.png"
+
+    # Carrega e redimensiona a imagem para o tamanho da tela
+    screen_width = janela.winfo_screenwidth()
+    screen_height = janela.winfo_screenheight()
+    img = Image.open(BACKGROUND_IMAGE).resize((screen_width, screen_height))
+    bg_img = ImageTk.PhotoImage(img)
+
+    # Cria um label para a imagem de fundo
+    background = tk.Label(janela, image=bg_img)
+    background.place(x=0, y=0, relwidth=1, relheight=1)
+
+    title_text = tk.StringVar()
+    title_label = tk.Label(background, textvariable=title_text, font=("Comic Sans MS", 24), bg="black", fg="white")
+    title_label.grid(row=0, column=0, padx=20, pady=10)
+    title_text.set("Título Foda")
+
+    msg1_text = tk.StringVar()
+    msg1_label = tk.Label(background, textvariable=msg1_text, font=("Times New Roman", 19), bg="black", fg="white")
+    msg1_label.grid(row=1, column=0, padx=20, pady=10)
+    msg1_text.set("Coiso 1")
+
+    msg2_text = tk.StringVar()
+    msg2_label = tk.Label(background, textvariable=msg2_text, font=("Times New Roman", 19), bg="black", fg="white")
+    msg2_label.grid(row=2, column=0, padx=20, pady=10)
+    msg2_text.set("Coiso 2")
+
+    msg3_text = tk.StringVar()
+    msg3_label = tk.Label(background, textvariable=msg3_text, font=("Times New Roman", 19), bg="black", fg="white")
+    msg3_label.grid(row=3, column=0, padx=20, pady=10)
+    msg3_text.set("Coiso 3")
+
+    warning_text = tk.StringVar()
+    warning_label = tk.Label(background, textvariable=warning_text, font=("Arial", 16), bg="black", fg="yellow")
+    warning_label.grid(row=2, column=2, padx=20, pady=10)
+    warning_text.set("")
+
+    return background, title_label, msg1_label, msg2_label, msg3_label, warning_label
+
+# frame ux
