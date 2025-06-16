@@ -22,23 +22,31 @@ def setup(_uxs: UXSystem, holder: TextHolder):
 
     ui.title.set("Magic: The Gathering")
     ui.msg1.set("Identificação de jogadores")
-    ui.warning.set("- Jogador 1, passe seu identificador")
+    ui.warning.set("Jogador 1, passe seu identificador")
 
-    uxs.ON_RFID.append(associar_cartas)
+    uxs.ON_RFID.append(identificar_player)
 
 
 def identificar_player(rfid):
     global players, player_count, ID_to_player
-    if(player_count == 1):
-        uxs.clear_all_callbacks()
-        uxs.ON_RFID.append(associar_cartas)
+    if rfid in ID_to_player.keys():
+        return
     ID_to_player[rfid] = players[player_count]
     player_count += 1
+    ui.warning.set(f"- Jogador {player_count+1}, passe seu identificador")
+    if(player_count >= 2):
+        uxs.clear_all_callbacks()
+        ui.title.set("Magic: The Gathering")
+        ui.msg1.set("Identificação de cartas\nCada jogador deve associar 3 cartas")
+        ui.msg2.set("- Jogador 1:  0 / 3 cartas associadas")
+        ui.msg3.set("- Jogador 2:  0 / 3 cartas associadas")
+        ui.warning.set("Jogador 1, passe uma carta em branco no leitor")
+        uxs.ON_RFID.append(associar_cartas)
 
 def associar_cartas(rfid):
     global ID_to_card, player1, player2, players, current_player, p1cards, p2cards, uxs
 
-    if rfid in ID_to_card.keys():
+    if rfid in ID_to_card.keys() or rfid in ID_to_player.keys():
         # TODO: avisar ao jogador que aquela carta já foi associada
         return
 
@@ -46,13 +54,16 @@ def associar_cartas(rfid):
         ID_to_card[rfid] = (CardList[p1cards], player1)
         player1.cards_hand.append(CardList[p1cards])
         p1cards += 1
+        ui.msg2.set(f"- Jogador 1:  {p1cards} / 3 cartas associadas")
     elif p2cards < 3:
         ID_to_card[rfid] = (CardList[3 + p2cards], player2)
         player1.cards_hand.append(CardList[3 + p2cards])
         p2cards += 1
+        ui.msg3.set(f"- Jogador 2:  {p2cards} / 3 cartas associadas")
     else:
         uxs.clear_all_callbacks()
         # Esperando início do jogo
+        ui.warning.set("novo estado iniciado")
         uxs.ON_B_AZUL.append(iniciar_turno)
 
 def iniciar_turno():
