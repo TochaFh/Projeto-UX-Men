@@ -1,6 +1,6 @@
 <mxfile host="app.diagrams.net" agent="Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/137.0.0.0 Safari/537.36" version="27.1.5">
   <diagram id="C5RBs43oDa-KdzZeNtuy" name="Page-1">
-    <mxGraphModel dx="679" dy="378" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="827" pageHeight="1169" math="0" shadow="0">
+    <mxGraphModel dx="983" dy="547" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="827" pageHeight="1169" math="0" shadow="0">
       <root>
         <mxCell id="WIyWlLk6GJQsqaUBKTNV-0" />
         <mxCell id="WIyWlLk6GJQsqaUBKTNV-1" parent="WIyWlLk6GJQsqaUBKTNV-0" />
@@ -37,13 +37,14 @@
         <mxCell id="U-rhy0H6Ldnbkr2NM6ow-11" value="Leitura de um RFID ainda não lido" style="text;html=1;align=center;verticalAlign=middle;resizable=0;points=[];autosize=1;strokeColor=none;fillColor=none;" parent="WIyWlLk6GJQsqaUBKTNV-1" vertex="1">
           <mxGeometry x="70" y="370" width="210" height="30" as="geometry" />
         </mxCell>
-        <mxCell id="U-rhy0H6Ldnbkr2NM6ow-25" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;entryX=0.5;entryY=0;entryDx=0;entryDy=0;" parent="WIyWlLk6GJQsqaUBKTNV-1" source="U-rhy0H6Ldnbkr2NM6ow-12" target="U-rhy0H6Ldnbkr2NM6ow-16" edge="1">
+        <mxCell id="U-rhy0H6Ldnbkr2NM6ow-25" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;" parent="WIyWlLk6GJQsqaUBKTNV-1" source="U-rhy0H6Ldnbkr2NM6ow-12" edge="1">
           <mxGeometry relative="1" as="geometry">
             <Array as="points">
               <mxPoint x="290" y="520" />
-              <mxPoint x="290" y="200" />
-              <mxPoint x="370" y="200" />
+              <mxPoint x="290" y="80" />
+              <mxPoint x="370" y="80" />
             </Array>
+            <mxPoint x="370" y="130" as="targetPoint" />
           </mxGeometry>
         </mxCell>
         <mxCell id="U-rhy0H6Ldnbkr2NM6ow-12" value="&quot;Cartas do jogador 1 foram lidas com sucesso.&quot;" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#f8cecc;strokeColor=#b85450;" parent="WIyWlLk6GJQsqaUBKTNV-1" vertex="1">
@@ -343,6 +344,9 @@
         </mxCell>
         <mxCell id="AvsIWTUZXzp0jRkqoMEe-29" value="Leitura de um RFID ainda não lido" style="text;html=1;align=center;verticalAlign=middle;resizable=0;points=[];autosize=1;strokeColor=none;fillColor=none;" vertex="1" parent="WIyWlLk6GJQsqaUBKTNV-1">
           <mxGeometry x="85" y="195" width="210" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="AvsIWTUZXzp0jRkqoMEe-32" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;entryX=0.5;entryY=0;entryDx=0;entryDy=0;" edge="1" parent="WIyWlLk6GJQsqaUBKTNV-1" source="AvsIWTUZXzp0jRkqoMEe-30" target="U-rhy0H6Ldnbkr2NM6ow-16">
+          <mxGeometry relative="1" as="geometry" />
         </mxCell>
         <mxCell id="AvsIWTUZXzp0jRkqoMEe-30" value="&quot;Jogador 2, passe seu identificador&quot;" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#f8cecc;strokeColor=#b85450;" vertex="1" parent="WIyWlLk6GJQsqaUBKTNV-1">
           <mxGeometry x="310" y="130" width="120" height="60" as="geometry" />

@@ -4,10 +4,11 @@ from cartas_demo import *
 from UX_System.uxsystem import UXSystem
 
 def setup(_uxs: UXSystem):
-    global ID_to_card, player1, player2, players, current_player, p1cards, p2cards, uxs, main_count, atacantes
+    global ID_to_card, player1, player2, players, current_player, p1cards, p2cards, uxs, main_count, atacantes, ID_to_player
     main_count = 1
     uxs = _uxs
     ID_to_card = dict()
+    ID_to_player = dict()
     p1cards = p2cards = 0
     player1 = Jogador(IDJogador.GOLGARI)
     player2 = Jogador(IDJogador.RED)
@@ -135,11 +136,15 @@ def conjurar_magica(carta: CartaMagic):
         else:
             # TODO: avisar ao jogador que ele não tem mana o suficiente
             pass
+    # TODO: remover passes
     elif carta == MonstrousRage:
-
+        pass
     elif carta == BurnTogether:
+        pass
 
-def escolher_criatura_alvo
+# TODO: remover pass
+def escolher_criatura_alvo():
+    pass
 
 def ativar_habilidade(carta):
     pass
