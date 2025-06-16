@@ -55,16 +55,16 @@ def associar_cartas(rfid):
         player1.cards_hand.append(CardList[p1cards])
         p1cards += 1
         ui.msg2.set(f"- Jogador 1:  {p1cards} / 3 cartas associadas")
-    elif p2cards < 3:
+    else:
         ID_to_card[rfid] = (CardList[3 + p2cards], player2)
         player1.cards_hand.append(CardList[3 + p2cards])
         p2cards += 1
         ui.msg3.set(f"- Jogador 2:  {p2cards} / 3 cartas associadas")
-    else:
-        uxs.clear_all_callbacks()
-        # Esperando início do jogo
-        ui.warning.set("novo estado iniciado")
-        uxs.ON_B_AZUL.append(iniciar_turno)
+        if p2cards >= 3:
+            uxs.clear_all_callbacks()
+            # Esperando início do jogo
+            ui.warning.set("Aperte o botão azul para iniciar o jogo")
+            uxs.ON_B_AZUL.append(iniciar_turno)
 
 def iniciar_turno():
     global players, current_player, uxs, main_count, atacantes
@@ -218,7 +218,7 @@ def BT_getplayer(rfid):
         return
     
     alvo: Jogador = ID_to_player[rfid]
-    alvo.vida -= 
+    alvo.vida -= 0
 
     uxs.clear_all_callbacks()
     uxs.ON_B_AZUL.append()
