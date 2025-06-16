@@ -93,6 +93,7 @@ def iniciar_turno():
     ui.msg1.set("Fase de manutenção")
     ui.msg2.set(f"(Desvirar permanentes)")
     ui.msg3.set("")
+    ui.warning.set("Aperte o botão azul para prosseguir")
     ui.refresh()
 
     uxs.clear_all_callbacks()
@@ -100,7 +101,10 @@ def iniciar_turno():
     
 def main_phase():
     global main_count, uxs, players, current_player, ID_to_card
-    # TODO: informar ao jogador que está na main phase, aguardando uma ação
+    ui.msg1.set(f"Fase principal")
+    ui.msg2.set("Passe cartas no leitor para conjurá-las ou ativar habilidades")
+    ui.msg3.set("Aperte o botão azul para prosseguir de fase\n e o botão vermelho para encerrar o turno")
+    ui.warning.set("")
 
     uxs.clear_all_callbacks()
 
@@ -117,7 +121,7 @@ def main_phase():
         try:
             carta = ID_to_card[rfid][0]
         except KeyError:
-            # TODO: informar que a carta é inválida
+            ui.warning.set("Passe uma carta válida")
             main_phase()
 
         if carta in players[current_player].cards_hand:
@@ -130,7 +134,10 @@ def main_phase():
 def declare_attacks():
     global uxs, atacantes
 
-    # TODO: informar ao jogador que ele está declarando ataques e mostrar quais são os atacantes atuais
+    ui.msg1.set("Fase de combate")
+    ui.msg2.set("Declare seus atacantes")
+    ui.msg3.set("atacantes: " + ", ".join([carta.nome for carta in atacantes]) if atacantes else "Nenhum atacante declarado")
+    
 
     uxs.clear_all_callbacks()
 
