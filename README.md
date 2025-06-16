@@ -9,6 +9,55 @@ Bem-vindo ao repositório do Projeto UX-Men, um projeto de Interface Humano-Comp
 - Rafael Campideli Hoyos             – RA: 175100  
 - Lucas Palacio Almeida              – RA: 236380
 
+## 📁 Estrutura do Repositório
+```bash
+
+./
+├── 📑 documentos/                    # Documentação e diagramas
+│   ├── 🗺️ Magic_States.drawio          # Fluxo de estados do Magic
+│   ├── 📝 script_partida_magic_sistema.txt   # Roteiro da interação com o sistema
+│   └── 📝 script_partida_magic.txt          # Roteiro da partida física
+│
+├── 📄 estrutura.txt                   # Esboço inicial da estrutura do projeto
+├── 🐍 main.py                         # Ponto de entrada geral (protótipo inicial)
+│
+├── 🍓 Raspberry/                      # Código específico para o Raspberry Pi + RFID
+│   ├── 🖼️ Captura de tela 2025-06-09 010212.png  # Screenshot do ambiente físico
+│   ├── 📂 main_rasp/                  # Código de leitura RFID
+│   │   ├── 🐍 main.py
+│   │   └── 🐍 mfrc522.py              # Biblioteca para o leitor MFRC522
+│   └── 📂 projeto_blink/              # Teste de GPIO (ex: blink de LED)
+│       └── 🐍 main.py
+│
+├── 📄 README.md                       # Este arquivo de documentação
+│
+├── 🧙 UX_Magic/                       # Lógica do jogo Magic (protótipo)
+│   ├── 🃏 cartas_demo.py              # Cartas de demonstração
+│   ├── 📂 magic_logic/                # Núcleo de regras do Magic
+│   │   ├── ⚔️ batalha.py
+│   │   ├── 🧾 carta_magic.py
+│   │   ├── 📋 exemplo_cartamagic.py
+│   │   └── 👤 jogador.py
+│   ├── 🖥️ magic_ui.py                 # Integração da UI com o jogo
+│   └── 🐍 main_magic.py               # Execução principal do protótipo Magic
+│
+├── 🖧 UX_System/                      # Módulo central de comunicação física ↔️ digital
+│   ├── 🧲 carta_fisica_virtual.py      # Tradução de RFID para objetos virtuais
+│   ├── 📡 comunica_rasp.py            # Comunicação entre Raspberry e o sistema
+│   └── 🧠 uxsystem.py                 # Lógica geral do sistema árbitro
+│
+└── 🖼️ UX_UI/                          # Interface gráfica (Tkinter)
+    ├── 🖼️ images/                     # Recursos visuais
+    │   ├── 🌅 fundo.png
+    │   ├── 🖥️ logo_ux_system.png
+    │   └── 🎴 magic_BG.png
+    ├── 🖥️ interface2.py               # Versão alternativa da UI
+    ├── 🖥️ interface.py                # Interface principal
+    ├── 🗂️ menu_ux.py                   # Menu inicial
+    └── 🧪 teste_UI.py                 # Testes da interface
+
+``` 
+
   
 📌 Visão Geral
 
