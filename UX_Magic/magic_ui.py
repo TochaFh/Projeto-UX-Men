@@ -2,7 +2,7 @@ import tkinter as tk
 from PIL import Image, ImageTk
 
 def setup(janela):
-    global bg_img
+    global bg_img, txt_leitura
 
     # Caminho da imagem de fundo
     BACKGROUND_IMAGE = "UX_UI/images/magic_BG.png"
@@ -38,18 +38,50 @@ def setup(janela):
     msg3_text.set("")
 
     warning_text = tk.StringVar()
-    warning_label = tk.Label(background, textvariable=warning_text, font=("Arial", 23), bg="black", fg="yellow")
+    warning_label = tk.Label(background, textvariable=warning_text, font=("Times New Roman", 23), bg="black", fg="yellow")
     warning_label.grid(row=2, column=2, padx=20, pady=10)
     warning_text.set("")
 
-    holder = TextHolder(title_text, msg1_text, msg2_text, msg3_text, warning_text)
+    txt_leitura = tk.StringVar()
+    txt_leitura_label = tk.Label(background, textvariable=txt_leitura, font=("Times New Roman", 18), bg="black", fg="white")
+    txt_leitura_label.place(relx=0.85, rely=0.1, anchor="n")
+    txt_leitura.set("")
+
+    lbls = [tk.Label(background, image=p, bg="black") for p in PHOTOS_IMG_CARTAS]
+    holder = TextHolder(title_text, msg1_text, msg2_text, msg3_text, warning_text, lbls)
+
 
     return background, holder
 
 class TextHolder:
-    def __init__(self, _title_label, _msg1_label, _msg2_label, _msg3_label, _warning_label):
+    def __init__(self, _title_label, _msg1_label, _msg2_label, _msg3_label, _warning_label, lbls):
         self.title = _title_label
         self.msg1 = _msg1_label
         self.msg2 = _msg2_label
         self.msg3 = _msg3_label
         self.warning = _warning_label
+        self.LABELS_IMG_CARTAS = lbls
+
+    def mostrar_carta(self, txt, img_code=None):
+        global txt_leitura
+        self.esconder_carta()
+        txt_leitura.set(txt)
+        if img_code != None:
+            self.LABELS_IMG_CARTAS[img_code].place(relx=0.85, rely=0.2, anchor="n")
+
+    def esconder_carta(self):
+        global txt_leitura
+        txt_leitura.set("")
+        for lbl in self.LABELS_IMG_CARTAS:
+            lbl.place_forget()
+
+URL_IMGS_CARTAS = [ # 0 1 2 3 4 5
+    "UX_Magic/magic_assets/blb-138-heartfire-hero.jpg",
+    "UX_Magic/magic_assets/dsk-119-unstoppable-slasher.jpg",
+    "UX_Magic/magic_assets/fdn-227-llanowar-elves.jpg",
+    "UX_Magic/magic_assets/lci-92-bloodletter-of-aclazotz.jpg",
+    "UX_Magic/magic_assets/woe-142-monstrous-rage.jpg",
+    "UX_Magic/magic_assets/woe-221-callous-sell-sword.jpg"
+]
+
+PHOTOS_IMG_CARTAS = [ImageTk.PhotoImage(Image.open(url).resize((672 // 2, 936 // 2))) for url in URL_IMGS_CARTAS]

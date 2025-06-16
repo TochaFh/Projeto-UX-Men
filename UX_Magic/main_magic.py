@@ -26,6 +26,14 @@ def setup(_uxs: UXSystem, holder: TextHolder):
 
     uxs.ON_RFID.append(identificar_player)
 
+    uxs.ON_LEITURA.append(visualizar_carta)
+
+def visualizar_carta(rfid):
+    global ID_to_card, player1, player2, players, current_player, p1cards, p2cards, uxs
+    if rfid not in ID_to_card.keys():
+        ui.mostrar_carta("O identificador não corresponde a uma carta associada")
+        return
+    ui.mostrar_carta(f"Carta do jogador {ID_to_card[rfid][1].ID.value}:", ID_to_card[rfid][0].img_code)
 
 def identificar_player(rfid):
     global players, player_count, ID_to_player
@@ -55,6 +63,8 @@ def associar_cartas(rfid):
         player1.cards_hand.append(CardList[p1cards])
         p1cards += 1
         ui.msg2.set(f"- Jogador 1:  {p1cards} / 3 cartas associadas")
+        if p1cards >= 3:
+            ui.warning.set("Jogador 2, passe uma carta em branco no leitor")
     else:
         ID_to_card[rfid] = (CardList[3 + p2cards], player2)
         player1.cards_hand.append(CardList[3 + p2cards])
@@ -73,7 +83,10 @@ def iniciar_turno():
     current_player = (current_player + 1) % 2
     players[current_player].iniciar_turno()
 
-    # TODO: informar início do turno do jogador e pedir pra ele desvirar seus permanentes
+    ui.title.set(f"Turno do Jogador {current_player + 1}")
+    ui.msg1.set("Fase de manutenção")
+    ui.msg2.set(f"(Desvirar permanentes)")
+    ui.msg3.set("")
 
     uxs.clear_all_callbacks()
     uxs.ON_B_AZUL.append(main_phase)

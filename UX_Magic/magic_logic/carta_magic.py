@@ -23,6 +23,7 @@ class CartaMagic:
     resistencia: int = 0
     iniciativa: bool = False
     golpe_duplo: bool = False
+    img_code: int = 0
 
     def __post_init__(self):
         self.poder = self.poder_base

@@ -6,7 +6,8 @@ LlanowarElves = CartaMagic(
     tipo=TipoCarta.CRIATURA,
     descricao='Vire essa criatura: adicione 1 de mana.',
     poder_base=1,
-    resistencia_base=1
+    resistencia_base=1,
+    img_code=2
     )
 
 HeartfireHero = CartaMagic(
@@ -16,7 +17,8 @@ HeartfireHero = CartaMagic(
     descricao='Quando essa criatura é alvo de um feitiço que você controla, ela recebe um marcador +1/+1. Isso ocorre apenas uma vez por turno.\n' \
     'Quando essa criatura morre, ela dá dano igual ao seu poder a todos os oponentes.',
     poder_base=1,
-    resistencia_base=1
+    resistencia_base=1,
+    img_code=0
     )
 
 UnstoppableSlasher = CartaMagic(
@@ -26,14 +28,16 @@ UnstoppableSlasher = CartaMagic(
     descricao='Quando essa criatura causa dano de combate a um jogador, esse jogador perde metade da sua vida, arredondado pra cima.\n' \
     'Quando essa criatura morre, se ela não tiver contadores, retorne-a ao campo de batalha com dois marcadores de atordoamento.',
     poder_base=2,
-    resistencia_base=3
+    resistencia_base=3,
+    img_code=1
     )
 
 MonstrousRage = CartaMagic(
     nome='Monstrous Rage',
     custo=1,
     tipo=TipoCarta.MAGICA_INSTANTANEA,
-    descricao='Criatura alvo Recebe +2/+0 até o fim do turno. Crie uma ficha de função de monstro anexada à criatura.'
+    descricao='Criatura alvo Recebe +2/+0 até o fim do turno. Crie uma ficha de função de monstro anexada à criatura.',
+    img_code=4
     )
 
 BurnTogether = CartaMagic(
@@ -41,6 +45,7 @@ BurnTogether = CartaMagic(
     custo=1,
     tipo=TipoCarta.FEITICO,
     descricao='Criatura alvo que você controla causa dano igual ao seu poder a qualquer outro alvo. Depois sacrifique a criatura.',
+    img_code=5
     )
 
 BloodletterOfAclazotz = CartaMagic(
@@ -50,7 +55,8 @@ BloodletterOfAclazotz = CartaMagic(
     descricao='Voador\n' \
     'Se um oponente perderia vida durante o seu turno, em vez disso ele perde o dobro de vida',
     poder_base=2,
-    resistencia_base=4
+    resistencia_base=4,
+    img_code=3
     )
 
 CardList = [LlanowarElves, UnstoppableSlasher, BloodletterOfAclazotz, HeartfireHero, MonstrousRage, BurnTogether]
