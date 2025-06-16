@@ -5,16 +5,16 @@ from UX_System.uxsystem import UXSystem
 from UX_Magic.magic_ui import TextHolder
 
 def setup(_uxs: UXSystem, holder: TextHolder):
-    global ID_to_card, player1, player2, players, current_player, p1cards, p2cards, uxs, main_count, atacantes, ID_to_player, ui, player_count
+    global ID_to_card, player_golgari, player_red, players, current_player, p1cards, p2cards, uxs, main_count, atacantes, ID_to_player, ui, player_count
     player_count = 0
     main_count = 1
     uxs = _uxs
     ID_to_card = dict()
     ID_to_player = dict()
     p1cards = p2cards = 0
-    player1 = Jogador(IDJogador.GOLGARI)
-    player2 = Jogador(IDJogador.RED)
-    players = [player1, player2]
+    player_golgari = Jogador(IDJogador.GOLGARI)
+    player_red = Jogador(IDJogador.RED)
+    players = [player_golgari, player_red]
     current_player = -1
     atacantes = []
 
@@ -29,7 +29,7 @@ def setup(_uxs: UXSystem, holder: TextHolder):
     uxs.ON_LEITURA.append(visualizar_carta)
 
 def visualizar_carta(rfid):
-    global ID_to_card, player1, player2, players, current_player, p1cards, p2cards, uxs
+    global ID_to_card, player_golgari, player_red, players, current_player, p1cards, p2cards, uxs
     if rfid not in ID_to_card.keys():
         ui.mostrar_carta("O identificador não corresponde a uma carta associada")
         return
@@ -52,22 +52,22 @@ def identificar_player(rfid):
         uxs.ON_RFID.append(associar_cartas)
 
 def associar_cartas(rfid):
-    global ID_to_card, player1, player2, players, current_player, p1cards, p2cards, uxs
+    global ID_to_card, player_golgari, player_red, players, current_player, p1cards, p2cards, uxs
 
     if rfid in ID_to_card.keys() or rfid in ID_to_player.keys():
         # TODO: avisar ao jogador que aquela carta já foi associada
         return
 
     if p1cards < 3:
-        ID_to_card[rfid] = (CardList[p1cards], player1)
-        player1.cards_hand.append(CardList[p1cards])
+        ID_to_card[rfid] = (CardList[p1cards], player_golgari)
+        player_golgari.cards_hand.append(CardList[p1cards])
         p1cards += 1
         ui.msg2.set(f"- Jogador 1:  {p1cards} / 3 cartas associadas")
         if p1cards >= 3:
             ui.warning.set("Jogador 2, passe uma carta em branco no leitor")
     else:
-        ID_to_card[rfid] = (CardList[3 + p2cards], player2)
-        player1.cards_hand.append(CardList[3 + p2cards])
+        ID_to_card[rfid] = (CardList[3 + p2cards], player_red)
+        player_golgari.cards_hand.append(CardList[3 + p2cards])
         p2cards += 1
         ui.msg3.set(f"- Jogador 2:  {p2cards} / 3 cartas associadas")
         if p2cards >= 3:
@@ -158,6 +158,11 @@ def resultados_combate():
     dano_causado = 0
     for carta in atacantes:
         dano_causado += carta.poder
+
+    if BloodletterOfAclazotz in players[current_player].cards_bf:
+        players[(current_player + 1)%2].vida =  0
+    else:
+        players[(current_player + 1)%2].vida -= dano_causado
     
     # TODO: informar ao jogador o resultado do combate
 
@@ -229,12 +234,24 @@ def BT_getplayer(rfid):
     if rfid not in ID_to_player.keys():
         # TODO: ID invalido
         return
-    
-    alvo: Jogador = ID_to_player[rfid]
-    alvo.vida -= 0
+
+    uxs.clear_all_callbacks()
+    uxs.ON_B_AZUL.append(BT_cause_damage_sac)
+
+def BT_cause_damage_sac():
+    player_golgari.vida -= HeartfireHero.poder
+
+    # TODO: jogador golgari recebe dano, hh é sacrificado (trigger adicionado ao stack)
 
     uxs.clear_all_callbacks()
     uxs.ON_B_AZUL.append()
+
+def BT_hh_death_trigger():
+    player_golgari.vida -= HeartfireHero.poder
+
+    # TODO: resolução do trigger, dano ao jogador golgari
+
+
 
 # TODO: remover pass
 def ativar_habilidade(carta):
