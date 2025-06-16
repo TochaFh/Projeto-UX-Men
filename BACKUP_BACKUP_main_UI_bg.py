@@ -6,7 +6,9 @@ BACKGROUND_IMAGE = "UX_UI/images/magic_BG.png"
 
 janela = tk.Tk()
 #janela.attributes('-fullscreen', True)  # Janela em tela cheia
-
+def pogers_function():
+  if play_of_the_game:
+    pog()
 # Carrega e redimensiona a imagem para o tamanho da tela
 screen_width = janela.winfo_screenwidth()
 screen_height = janela.winfo_screenheight()
