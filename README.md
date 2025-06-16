@@ -1,7 +1,7 @@
 # Projeto UX-Men 🎮✨
 
 Bem-vindo ao repositório do Projeto UX-Men, um projeto de Interface Humano-Computador (IHC) desenvolvido como parte de uma disciplina acadêmica. A ideia central é criar um sistema interativo que auxilie jogos de cartas físicos com o apoio de um "árbitro digital".
-## 👥 Integrantes (ID 1)
+## 👥 Integrantes (ID 12)
 
 - Caique Pinheiro Andrade            – RA: 204677
 - Lucas Rodrigues de Mendonça        - RA: 236800
@@ -17,12 +17,14 @@ O sistema usa um Raspberry Pi acoplado a um sensor RFID para identificar cartas 
 Além da leitura física, o sistema inclui uma interface gráfica feita com Tkinter, exibida em uma tela conectada ao Raspberry, funcionando como um painel digital de acompanhamento e mediação das partidas.
 
 Atualmente, o protótipo inicial foi implementado com algumas regras e cartas inspiradas no jogo Magic: The Gathering, mas o foco futuro é expandir para um sistema genérico capaz de entender e validar qualquer jogo de cartas físico.
+
 🎯 Objetivos do Projeto
 
-✅ Proporcionar uma experiência híbrida entre o físico e o digital em jogos de cartas.
-✅ Ajudar jogadores a seguirem corretamente as regras, com validações automáticas.
-✅ Evitar erros durante partidas presenciais com auxílio de um árbitro digital.
-✅ Explorar conceitos de usabilidade e interação homem-máquina em um ambiente lúdico.
+✅ Proporcionar uma experiência híbrida entre o físico e o digital em jogos de cartas.  
+✅ Ajudar jogadores a seguirem corretamente as regras, com validações automáticas.   
+✅ Evitar erros durante partidas presenciais com auxílio de um árbitro digital.  
+✅ Explorar conceitos de usabilidade e interação homem-máquina em um ambiente lúdico.  
+
 🖥️ Tecnologias Usadas
 
     🐍 Python
@@ -45,9 +47,9 @@ O projeto está em fase de protótipo funcional:
 
     Integração inicial entre hardware e software ✅
 
-📷 Prints da Interface
+📷 Imagens do Projeto
 
-(Adicione aqui futuramente imagens ou GIFs mostrando a interface Tkinter em funcionamento e o setup físico com o Raspberry + RFID)
+
 🚀 Próximos Passos
 
     Tornar o sistema modular para permitir diferentes jogos além de Magic.
