@@ -31,7 +31,7 @@ def setup(_uxs: UXSystem, holder: TextHolder):
 def visualizar_carta(rfid):
     global ID_to_card, player_golgari, player_red, players, current_player, p1cards, p2cards, uxs
     if rfid not in ID_to_card.keys():
-        ui.mostrar_carta("O identificador não corresponde a uma carta associada")
+        ui.mostrar_carta("O identificador não corresponde\na uma carta associada")
         return
     ui.mostrar_carta(f"Carta do jogador {ID_to_card[rfid][1].ID.value}:", ID_to_card[rfid][0].img_code)
 
@@ -42,6 +42,7 @@ def identificar_player(rfid):
     ID_to_player[rfid] = players[player_count]
     player_count += 1
     ui.warning.set(f"- Jogador {player_count+1}, passe seu identificador")
+    ui.refresh()
     if(player_count >= 2):
         uxs.clear_all_callbacks()
         ui.title.set("Magic: The Gathering")
@@ -49,6 +50,7 @@ def identificar_player(rfid):
         ui.msg2.set("- Jogador 1:  0 / 3 cartas associadas")
         ui.msg3.set("- Jogador 2:  0 / 3 cartas associadas")
         ui.warning.set("Jogador 1, passe uma carta em branco no leitor")
+        ui.refresh()
         uxs.ON_RFID.append(associar_cartas)
 
 def associar_cartas(rfid):
@@ -63,18 +65,22 @@ def associar_cartas(rfid):
         player_golgari.cards_hand.append(CardList[p1cards])
         p1cards += 1
         ui.msg2.set(f"- Jogador 1:  {p1cards} / 3 cartas associadas")
+        ui.refresh()
         if p1cards >= 3:
             ui.warning.set("Jogador 2, passe uma carta em branco no leitor")
+            ui.refresh()
     else:
         ID_to_card[rfid] = (CardList[3 + p2cards], player_red)
         player_golgari.cards_hand.append(CardList[3 + p2cards])
         p2cards += 1
         ui.msg3.set(f"- Jogador 2:  {p2cards} / 3 cartas associadas")
+        ui.refresh()
         if p2cards >= 3:
             uxs.clear_all_callbacks()
             # Esperando início do jogo
             ui.warning.set("Aperte o botão azul para iniciar o jogo")
             uxs.ON_B_AZUL.append(iniciar_turno)
+            ui.refresh()
 
 def iniciar_turno():
     global players, current_player, uxs, main_count, atacantes
@@ -87,6 +93,7 @@ def iniciar_turno():
     ui.msg1.set("Fase de manutenção")
     ui.msg2.set(f"(Desvirar permanentes)")
     ui.msg3.set("")
+    ui.refresh()
 
     uxs.clear_all_callbacks()
     uxs.ON_B_AZUL.append(main_phase)
