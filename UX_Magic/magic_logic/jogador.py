@@ -1,4 +1,4 @@
-from dataclasses import dataclass
+from dataclasses import dataclass, field
 from enum import Enum
 
 class IDJogador(Enum):
@@ -16,10 +16,10 @@ class Jogador:
     terrenos_virados: int = 0
     terrenos_desvirados: int = 0
     mana_extra: int = 0
-    criaturas: list = []
-    cards_hand: list = []
-    cards_bf: list = []
-    cards_grave: list = []
+    criaturas: list = field(default_factory=list)
+    cards_hand: list = field(default_factory=list)
+    cards_bf: list = field(default_factory=list)
+    cards_grave: list = field(default_factory=list)
 
     def iniciar_turno(self):
         self.terrenos_desvirados += self.terrenos_virados + 1

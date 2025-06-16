@@ -1,4 +1,4 @@
-from magic_logic.carta_magic import CartaMagic, TipoCarta
+from UX_Magic.magic_logic.carta_magic import CartaMagic, TipoCarta
 
 LlanowarElves = CartaMagic(
     nome='Llanowar Elves',

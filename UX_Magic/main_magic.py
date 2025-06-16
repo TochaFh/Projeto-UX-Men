@@ -1,10 +1,11 @@
-from magic_logic.carta_magic import CartaMagic, TipoCarta
-from magic_logic.jogador import Jogador, IDJogador
-from cartas_demo import *
+from UX_Magic.magic_logic.carta_magic import CartaMagic, TipoCarta
+from UX_Magic.magic_logic.jogador import Jogador, IDJogador
+from UX_Magic.cartas_demo import *
 from UX_System.uxsystem import UXSystem
+from UX_Magic.magic_ui import TextHolder
 
-def setup(_uxs: UXSystem):
-    global ID_to_card, player1, player2, players, current_player, p1cards, p2cards, uxs, main_count, atacantes, ID_to_player
+def setup(_uxs: UXSystem, holder: TextHolder):
+    global ID_to_card, player1, player2, players, current_player, p1cards, p2cards, uxs, main_count, atacantes, ID_to_player, ui
     main_count = 1
     uxs = _uxs
     ID_to_card = dict()
@@ -14,9 +15,13 @@ def setup(_uxs: UXSystem):
     player2 = Jogador(IDJogador.RED)
     players = [player1, player2]
     current_player = -1
-    atacantes: list[CartaMagic] = []
+    atacantes = []
 
-    # TODO: Pedir pros jogadores lerem as cartas
+    ui = holder
+
+    ui.title.set("Magic: The Gathering")
+    ui.msg1.set("Identificação de jogadores")
+    ui.msg2.set("- Jogador 1, passe seu identificador")
 
     uxs.ON_RFID.append(associar_cartas)
     

@@ -25,23 +25,31 @@ def setup(janela):
     msg1_text = tk.StringVar()
     msg1_label = tk.Label(background, textvariable=msg1_text, font=("Times New Roman", 19), bg="black", fg="white")
     msg1_label.grid(row=1, column=0, padx=20, pady=10)
-    msg1_text.set("Coiso 1")
+    msg1_text.set("")
 
     msg2_text = tk.StringVar()
     msg2_label = tk.Label(background, textvariable=msg2_text, font=("Times New Roman", 19), bg="black", fg="white")
     msg2_label.grid(row=2, column=0, padx=20, pady=10)
-    msg2_text.set("Coiso 2")
+    msg2_text.set("")
 
     msg3_text = tk.StringVar()
     msg3_label = tk.Label(background, textvariable=msg3_text, font=("Times New Roman", 19), bg="black", fg="white")
     msg3_label.grid(row=3, column=0, padx=20, pady=10)
-    msg3_text.set("Coiso 3")
+    msg3_text.set("")
 
     warning_text = tk.StringVar()
     warning_label = tk.Label(background, textvariable=warning_text, font=("Arial", 16), bg="black", fg="yellow")
     warning_label.grid(row=2, column=2, padx=20, pady=10)
     warning_text.set("")
 
-    return background, title_label, msg1_label, msg2_label, msg3_label, warning_label
+    holder = TextHolder(title_text, msg1_text, msg2_text, msg3_text, warning_text)
 
-# frame ux
+    return background, holder
+
+class TextHolder:
+    def __init__(self, _title_label, _msg1_label, _msg2_label, _msg3_label, _warning_label):
+        self.title = _title_label
+        self.msg1 = _msg1_label
+        self.msg2 = _msg2_label
+        self.msg3 = _msg3_label
+        self.warning = _warning_label

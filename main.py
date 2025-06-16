@@ -23,10 +23,10 @@ def run_magic():
     uxsystem.start()
 
     import UX_Magic.magic_ui as magic_ui
-    bg, title, msg1, msg2, msg3, warning = magic_ui.setup(janela)
+    bg, holder = magic_ui.setup(janela)
 
-    #import UX_Magic.main_magic as main_magic
-    #main_magic.setup(uxsystem, title, msg1, msg2, msg3, warning)
+    import UX_Magic.main_magic as main_magic
+    main_magic.setup(uxsystem, holder)
 
 def run_coup_disney():
     print("Coup Disney game setup not implemented yet.")
