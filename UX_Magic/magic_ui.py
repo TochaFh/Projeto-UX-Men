@@ -47,14 +47,19 @@ def setup(janela):
     txt_leitura_label.place(relx=0.85, rely=0.1, anchor="n")
     txt_leitura.set("")
 
+    life_text = tk.StringVar()
+    life_label = tk.Label(janela, textvariable=life_text, font=("Times New Roman", 35), bg="black", fg="red")
+    life_label.place(relx=0.1, rely=0.85, anchor="n")
+    life_text.set("vida")
+
     lbls = [tk.Label(janela, image=p, bg="black") for p in PHOTOS_IMG_CARTAS]
-    holder = TextHolder(title_text, msg1_text, msg2_text, msg3_text, warning_text, lbls, janela)
+    holder = TextHolder(title_text, msg1_text, msg2_text, msg3_text, warning_text, lbls, janela, life_text)
 
 
     return background, holder
 
 class TextHolder:
-    def __init__(self, _title_label, _msg1_label, _msg2_label, _msg3_label, _warning_label, lbls, _janela):
+    def __init__(self, _title_label, _msg1_label, _msg2_label, _msg3_label, _warning_label, lbls, _janela, _life_text):
         self.title = _title_label
         self.msg1 = _msg1_label
         self.msg2 = _msg2_label
@@ -63,6 +68,7 @@ class TextHolder:
         self.LABELS_IMG_CARTAS = lbls
         self.janela = _janela
         self.task_hide = None
+        self.life = _life_text
 
     def mostrar_carta(self, txt, img_code=None):
         global txt_leitura
