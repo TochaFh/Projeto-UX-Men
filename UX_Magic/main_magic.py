@@ -72,7 +72,7 @@ def associar_cartas(rfid):
             ui.refresh()
     else:
         ID_to_card[rfid] = (CardList[3 + p2cards], player_red)
-        player_golgari.cards_hand.append(CardList[3 + p2cards])
+        player_red.cards_hand.append(CardList[3 + p2cards])
         p2cards += 1
         ui.msg3.set(f"- Jogador 2:  {p2cards} / 3 cartas associadas")
         ui.refresh()
@@ -129,6 +129,8 @@ def main_phase():
             conjurar_magica(carta)
         elif carta in players[current_player].cards_bf:
             ativar_habilidade(carta)
+        else:
+            ui.warning.set("Você não pode jogar essa carta!")
 
     uxs.ON_RFID.append(handle_card_read_mp)
 
@@ -199,8 +201,6 @@ def conjurar_magica(carta: CartaMagic):
     else:
         # TODO: avisar ao jogador que ele não tem mana o suficiente
         ui.warning.set(f"Mana insuficiente para conjurar {carta.nome}")
-        # uxs.clear_all_callbacks()
-        # uxs.ON_B_AZUL.append(main_phase)
         return
     
     ui.warning.set('')
