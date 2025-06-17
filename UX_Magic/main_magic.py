@@ -266,6 +266,8 @@ def conjurar_magica(carta: CartaMagic):
         uxs.clear_all_callbacks()
         uxs.ON_RFID.append(await_HH)
 
+    ui.mostrar_carta("MÁGICA CONJURADA", carta.img_code)
+
 def MR_trigger_HH():
     global uxs
     ui.msg1.set('O trigger "Adicione um contador +1/+1 a Heartfire Hero" foi adicionado ao stack')
