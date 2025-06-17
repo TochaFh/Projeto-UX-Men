@@ -5,8 +5,8 @@ from UX_System.uxsystem import UXSystem
 from UX_Magic.magic_ui import TextHolder
 from time import sleep
 
-def setup(_uxs: UXSystem, holder: TextHolder):
-    global ID_to_card, player_golgari, player_red, players, current_player, p1cards, p2cards, uxs, main_count, atacantes, ID_to_player, ui, player_count
+def setup(_uxs: UXSystem, holder: TextHolder, _volta_menu):
+    global ID_to_card, player_golgari, player_red, players, current_player, p1cards, p2cards, uxs, main_count, atacantes, ID_to_player, ui, player_count, volta_menu
     player_count = 0
     main_count = 1
     uxs = _uxs
@@ -18,6 +18,7 @@ def setup(_uxs: UXSystem, holder: TextHolder):
     players = [player_golgari, player_red]
     current_player = -1
     atacantes = []
+    volta_menu = _volta_menu
 
     ui = holder
 
@@ -253,14 +254,14 @@ def conjurar_magica(carta: CartaMagic):
         ui.msg1.set('Conjurando Burn Together')
         ui.msg2.set('')
         ui.msg3.set('')
-        ui.warning("Declare uma criatura alvo!")
+        ui.warning.set("Declare uma criatura alvo!")
 
         def await_HH(rfid):
             if ID_to_card[rfid][0] == HeartfireHero:
                 ui.msg1.set('Conjurando Burn Together')
                 ui.msg2.set('')
                 ui.msg3.set('')
-                ui.warning("Declare um jogador alvo")
+                ui.warning.set("Declare um jogador alvo")
                 uxs.clear_all_callbacks()
                 uxs.ON_RFID.append(BT_getplayer)
 
@@ -337,9 +338,10 @@ def fim_jogo():
     ui.msg1.set("Jogador Golgari venceu!")
     ui.msg2.set('')
     ui.msg3.set('')
-    ui.warning.set('')
+    ui.warning.set('Pressione o botão azul para fechar')
     uxs.clear_all_callbacks()
-    # TODO: Voltar à tela inicial do UX System
+    uxs.ON_B_AZUL.append(volta_menu)
+    uxs.ON_B_VERMELHO.append(volta_menu)
 
 def ativar_habilidade(carta: CartaMagic):
     if carta != LlanowarElves:

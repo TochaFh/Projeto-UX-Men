@@ -26,10 +26,13 @@ def run_magic():
     bg, holder = magic_ui.setup(janela)
 
     import UX_Magic.main_magic as main_magic
-    main_magic.setup(uxsystem, holder)
+    main_magic.setup(uxsystem, holder, volta_menu)
 
 def run_coup_disney():
-    print("Coup Disney game setup not implemented yet.")
+    print("Jogo Coup Disney ainda não implementado.")
+
+def volta_menu():
+    exit()
 
 if __name__ == "__main__":
     main()
