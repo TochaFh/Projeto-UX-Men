@@ -244,7 +244,7 @@ def conjurar_magica(carta: CartaMagic):
         uxs.ON_B_AZUL.append(main_phase)
 
     elif carta == MonstrousRage:
-        ui.msg1.set('')
+        ui.msg1.set('Conjurando Monstrous Rage')
         ui.msg2.set('')
         ui.msg3.set('')
         ui.warning.set("Declare uma criatura alvo!")
@@ -252,8 +252,8 @@ def conjurar_magica(carta: CartaMagic):
         # TODO: informar que está aguardando uma criatura alvo
 
         def await_HH(rfid):
-            if ID_to_card[rfid] == HeartfireHero:
-                MR_trigger_HH(ID_to_card[rfid])
+            if ID_to_card[rfid][0] == HeartfireHero:
+                MR_trigger_HH()
 
         uxs.clear_all_callbacks()
         uxs.ON_RFID.append(await_HH)
@@ -265,7 +265,7 @@ def conjurar_magica(carta: CartaMagic):
         # TODO: informar que está aguardando uma criatura alvo
 
         def await_HH(rfid):
-            if ID_to_card[rfid] == HeartfireHero:
+            if ID_to_card[rfid][0] == HeartfireHero:
                 ui.msg1.set('')
                 ui.msg2.set('')
                 ui.msg3.set('')
