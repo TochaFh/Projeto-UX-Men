@@ -26,6 +26,9 @@ class Jogador:
         self.terrenos_desvirados += self.terrenos_virados + 1
         self.terrenos_virados = 0
         self.mana_extra = 0
+
+        for carta in self.cards_bf:
+            carta.virada = False
     
     @property
     def mana_total(self):

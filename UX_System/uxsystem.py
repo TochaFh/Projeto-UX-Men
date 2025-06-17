@@ -24,12 +24,15 @@ class UXSystem:
             id_count += 1
             _ID[rfid] = id_count
             print(f"Nova carta detectada: {_ID[rfid]}")
+        else:
+            print(f"Carta detectada: {_ID[rfid]}")
 
         for callback in self.ON_RFID:
             try:
                 callback(_ID[rfid])
             except Exception as e:
-                print(f"** Erro ao chamar callback em _on_rd: {e}")
+                # print(f"** Erro ao chamar callback em _on_rd: {e}")
+                raise e
 
     # ID detectado no modo de LEITURA
     def _on_rr(self, rfid):

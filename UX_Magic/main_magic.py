@@ -3,6 +3,7 @@ from UX_Magic.magic_logic.jogador import Jogador, IDJogador
 from UX_Magic.cartas_demo import *
 from UX_System.uxsystem import UXSystem
 from UX_Magic.magic_ui import TextHolder
+from time import sleep
 
 def setup(_uxs: UXSystem, holder: TextHolder):
     global ID_to_card, player_golgari, player_red, players, current_player, p1cards, p2cards, uxs, main_count, atacantes, ID_to_player, ui, player_count
@@ -107,7 +108,7 @@ def main_phase():
     ui.warning.set("")
 
     uxs.clear_all_callbacks()
-
+    sleep(0.1)
     # LIDANDO COM OS BOTÕES
     if(main_count == 1):
         uxs.ON_B_AZUL.append(declare_attacks)
@@ -120,9 +121,9 @@ def main_phase():
     def handle_card_read_mp(rfid):
         try:
             carta = ID_to_card[rfid][0]
+            ui.warning.set("")
         except KeyError:
             ui.warning.set("Passe uma carta válida")
-            main_phase()
 
         if carta in players[current_player].cards_hand:
             conjurar_magica(carta)
@@ -155,7 +156,7 @@ def declare_attacks():
             declare_attacks()
         else:
             atacantes.append(carta)
-            declare_attacks(carta)
+            declare_attacks()
 
     uxs.ON_RFID.append(handle_card_read_da)
 
@@ -194,14 +195,25 @@ def conjurar_magica(carta: CartaMagic):
     jogador_atual = players[current_player]
     if jogador_atual.mana_extra + jogador_atual.terrenos_desvirados >= carta.custo:      
         jogador_atual.consumir_mana(carta.custo)
+        jogador_atual.cards_hand.remove(carta)
     else:
         # TODO: avisar ao jogador que ele não tem mana o suficiente
-        uxs.clear_all_callbacks()
-        uxs.ON_B_AZUL.append(main_phase)
+        ui.warning.set(f"Mana insuficiente para conjurar {carta.nome}")
+        # uxs.clear_all_callbacks()
+        # uxs.ON_B_AZUL.append(main_phase)
         return
     
+    ui.warning.set('')
+    ui.msg1.set('')
+    ui.msg2.set('')
+    ui.msg3.set('')
+
     if carta.tipo == TipoCarta.CRIATURA:
         jogador_atual.cards_bf.append(carta)
+        ui.msg1.set(f"A criatura {carta.nome} foi conjurada!")
+        ui.msg2.set("Pressione o botão azul para prosseguir")
+        uxs.clear_all_callbacks()
+        uxs.ON_B_AZUL.append(main_phase)
 
     elif carta == MonstrousRage:
         # TODO: informar que está aguardando uma criatura alvo
@@ -278,23 +290,25 @@ def fim_jogo():
     # TODO: Voltar à tela inicial do UX System
 
 # TODO: remover pass
-def ativar_habilidade(carta):
+def ativar_habilidade(carta: CartaMagic):
     if carta != LlanowarElves:
         # TODO: informar ao jogador que a carta não tem habilidades
-        uxs.clear_all_callbacks()
-        uxs.ON_B_AZUL.append(main_phase)
+        ui.warning.set(f"{carta.nome} não tem habilidades")
         return
     
-    # TODO: perguntar o jogador se ele quer ativar a habilidade de llanowar elvess
+    # TODO: perguntar o jogador se ele quer ativar a habilidade da carta
     uxs.clear_all_callbacks()
-
+    ui.msg1.set(f'Deseja ativar a habilidade de {carta.nome}?')
+    ui.msg2.set('')
+    ui.msg3.set('')
+    
     def habilidade():
         player_golgari.mana_extra += 1
 
         # TODO: informar ao jogador golgari que ele recebeu uma mana extra
 
         uxs.clear_all_callbacks()
-        uxs.ON_B_AZUL(main_phase)
+        uxs.ON_B_AZUL.append(main_phase)
     
-    uxs.ON_B_AZUL(habilidade)
-    uxs.ON_B_VERMELHO(main_phase)
+    uxs.ON_B_AZUL.append(habilidade)
+    uxs.ON_B_VERMELHO.append(main_phase)

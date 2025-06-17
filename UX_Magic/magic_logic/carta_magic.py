@@ -24,6 +24,7 @@ class CartaMagic:
     iniciativa: bool = False
     golpe_duplo: bool = False
     img_code: int = 0
+    virada: bool = False
 
     def __post_init__(self):
         self.poder = self.poder_base
