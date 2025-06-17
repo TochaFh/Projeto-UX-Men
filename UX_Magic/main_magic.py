@@ -143,6 +143,7 @@ def declare_attacks():
     ui.msg1.set("Fase de combate")
     ui.msg2.set("Declare seus atacantes")
     ui.msg3.set("atacantes: " + ", ".join([carta.nome for carta in atacantes]) if atacantes else "Nenhum atacante declarado")
+    ui.warning.set("Aperte o botão azul para confirmar os atacantes")
     
 
     uxs.clear_all_callbacks()
@@ -174,9 +175,9 @@ def declare_attacks():
 def declare_blocks():
     global uxs
     ui.msg1.set("O oponente está sendo atacado")
-    ui.msg2.set("")
+    ui.msg2.set("Aperte o botão azul para confirmar os bloqueadores")
     ui.msg3.set("")
-    ui.warning.set("Declare bloqueadores!")
+    ui.warning.set("Declare bloqueadores!\n")
     uxs.clear_all_callbacks()
     uxs.ON_B_AZUL.append(resultados_combate)
 
@@ -287,7 +288,7 @@ def MR_addcounters_HH():
     uxs.ON_B_AZUL.append(MR_createtoken_HH)
 
 def MR_createtoken_HH():
-    HeartfireHero.poder += 2
+    HeartfireHero.poder += 3
 
     ui.msg1.set("Um monster role token foi atrelado a Heartfire Hero")
     ui.msg2.set("Heartfire Hero recebe +2/+0 até o fim do turno")
