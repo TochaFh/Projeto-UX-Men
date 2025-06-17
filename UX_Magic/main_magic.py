@@ -59,10 +59,7 @@ def associar_cartas(rfid):
     global ID_to_card, player_golgari, player_red, players, current_player, p1cards, p2cards, uxs
 
     if rfid in ID_to_card.keys() or rfid in ID_to_player.keys():
-        ui.msg1.set("")
-        ui.msg2.set("")
-        ui.msg3.set("")
-        ui.warning("Essa carta já foi cadastrada")
+        ui.warning.set("Essa carta já foi cadastrada")
         return
 
     if p1cards < 3:
