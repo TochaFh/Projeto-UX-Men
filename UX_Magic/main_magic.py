@@ -58,7 +58,10 @@ def associar_cartas(rfid):
     global ID_to_card, player_golgari, player_red, players, current_player, p1cards, p2cards, uxs
 
     if rfid in ID_to_card.keys() or rfid in ID_to_player.keys():
-        # TODO: avisar ao jogador que aquela carta já foi associada
+        ui.msg1.set("")
+        ui.msg2.set("")
+        ui.msg3.set("")
+        ui.warning("Essa carta já foi cadastrada")
         return
 
     if p1cards < 3:
@@ -150,10 +153,18 @@ def declare_attacks():
         try:
             carta: CartaMagic = ID_to_card[rfid][0]
         except KeyError:
+            ui.msg1.set("")
+            ui.msg2.set("")
+            ui.msg3.set("")
+            ui.warning("Passe uma carta válida para a leitura")
             # TODO: informar que a carta é inválida
             declare_attacks()
 
         if carta.tipo != TipoCarta.CRIATURA:
+            ui.msg1.set("")
+            ui.msg2.set("")
+            ui.msg3.set("")
+            ui.warning("Essa carta não é uma criatura")
             # TODO: informar que a carta não é uma criatura
             declare_attacks()
         else:
@@ -164,6 +175,10 @@ def declare_attacks():
 
 def declare_blocks():
     global uxs
+    ui.msg1.set("Você está sendo atacado")
+    ui.msg2.set("")
+    ui.msg3.set("")
+    ui.warning.set("Declare bloqueadores!")
     # TODO: pedir pro jogador declarar bloqueadores
 
     uxs.clear_all_callbacks()
@@ -175,6 +190,7 @@ def resultados_combate():
     dano_causado = 0
     for carta in atacantes:
         dano_causado += carta.poder
+
 
     # TODO: informar ao jogador o resultado do combate
 
@@ -200,6 +216,9 @@ def conjurar_magica(carta: CartaMagic):
         jogador_atual.cards_hand.remove(carta)
     else:
         # TODO: avisar ao jogador que ele não tem mana o suficiente
+        ui.msg1.set("")
+        ui.msg2.set("")
+        ui.msg3.set("")
         ui.warning.set(f"Mana insuficiente para conjurar {carta.nome}")
         return
     
@@ -216,6 +235,11 @@ def conjurar_magica(carta: CartaMagic):
         uxs.ON_B_AZUL.append(main_phase)
 
     elif carta == MonstrousRage:
+        ui.msg1.set('')
+        ui.msg2.set('')
+        ui.msg3.set('')
+        ui.warning.set("Declare uma criatura alvo!")
+
         # TODO: informar que está aguardando uma criatura alvo
 
         def await_HH(rfid):
@@ -225,10 +249,18 @@ def conjurar_magica(carta: CartaMagic):
         uxs.clear_all_callbacks()
         uxs.ON_RFID.append(await_HH)
     elif carta == BurnTogether:
+        ui.msg1.set('')
+        ui.msg2.set('')
+        ui.msg3.set('')
+        ui.warning("Declare uma criatura alvo!")
         # TODO: informar que está aguardando uma criatura alvo
 
         def await_HH(rfid):
             if ID_to_card[rfid] == HeartfireHero:
+                ui.msg1.set('')
+                ui.msg2.set('')
+                ui.msg3.set('')
+                ui.warning("Declare um jogador alvo")
                 # TODO: informar que está aguardando jogador alvo
 
                 uxs.clear_all_callbacks()
@@ -239,7 +271,13 @@ def conjurar_magica(carta: CartaMagic):
 
 def MR_trigger_HH():
     global uxs
+    ui.msg1.set('')
+    ui.msg2.set('')
+    ui.msg3.set('')
+    ui.warning.set("carata   ")
     # TODO: informar ao jogador sobre o trigger sendo colocado no stack
+    # O trigger "Adicione um contador +1/+1 a Heartfire Hero" foi adicionado ao stack
+
     uxs.clear_all_callbacks()
     uxs.ON_B_AZUL.append(MR_addcounters_HH)
 
