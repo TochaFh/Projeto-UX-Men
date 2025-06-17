@@ -157,7 +157,6 @@ def declare_attacks():
             ui.msg2.set("")
             ui.msg3.set("")
             ui.warning("Passe uma carta válida para a leitura")
-            # TODO: informar que a carta é inválida
             declare_attacks()
 
         if carta.tipo != TipoCarta.CRIATURA:
@@ -165,7 +164,6 @@ def declare_attacks():
             ui.msg2.set("")
             ui.msg3.set("")
             ui.warning("Essa carta não é uma criatura")
-            # TODO: informar que a carta não é uma criatura
             declare_attacks()
         else:
             atacantes.append(carta)
@@ -179,10 +177,7 @@ def declare_blocks():
     ui.msg2.set("")
     ui.msg3.set("")
     ui.warning.set("Declare bloqueadores!")
-    # TODO: pedir pro jogador declarar bloqueadores
-
     uxs.clear_all_callbacks()
-
     uxs.ON_B_AZUL.append(resultados_combate)
 
 def resultados_combate():
@@ -193,19 +188,17 @@ def resultados_combate():
         dano_causado += carta.poder
 
 
-    # TODO: informar ao jogador o resultado do combate
-
     if BloodletterOfAclazotz in players[current_player].cards_bf:
         players[(current_player + 1)%2].vida =  0
         uxs.clear_all_callbacks()
         uxs.ON_B_AZUL.append(fim_jogo)
-        ui.msg1.set(f'O jogador {oponente} perdeu toda sua vida')
+        ui.msg1.set(f'O jogador {oponente.ID} perdeu toda sua vida')
         ui.msg2.set('')
         ui.msg3.set('')
         ui.warning.set("Aperte o botão azul para continuar")
         return
     else:
-        ui.msg1.set(f"O jogador {oponente} recebeu {dano_causado} de dano")
+        ui.msg1.set(f"O jogador {oponente.ID} recebeu {dano_causado} de dano")
         ui.msg2.set("Aperte o botão azul para continuar")
         ui.msg3.set("")
         ui.warning.set("")
@@ -224,11 +217,10 @@ def conjurar_magica(carta: CartaMagic):
         jogador_atual.consumir_mana(carta.custo)
         jogador_atual.cards_hand.remove(carta)
     else:
-        # TODO: avisar ao jogador que ele não tem mana o suficiente
-        ui.msg1.set("")
+        ui.msg1.set(f"Mana insuficiente para conjurar {carta.nome}")
         ui.msg2.set("")
         ui.msg3.set("")
-        ui.warning.set(f"Mana insuficiente para conjurar {carta.nome}")
+        ui.warning.set(f"Aperte o botão azul para continuar")
         return
     
     ui.warning.set('')
@@ -249,7 +241,6 @@ def conjurar_magica(carta: CartaMagic):
         ui.msg3.set('')
         ui.warning.set("Declare uma criatura alvo!")
 
-        # TODO: informar que está aguardando uma criatura alvo
 
         def await_HH(rfid):
             if ID_to_card[rfid][0] == HeartfireHero:
@@ -258,20 +249,17 @@ def conjurar_magica(carta: CartaMagic):
         uxs.clear_all_callbacks()
         uxs.ON_RFID.append(await_HH)
     elif carta == BurnTogether:
-        ui.msg1.set('')
+        ui.msg1.set('Conjurando Burn Together')
         ui.msg2.set('')
         ui.msg3.set('')
         ui.warning("Declare uma criatura alvo!")
-        # TODO: informar que está aguardando uma criatura alvo
 
         def await_HH(rfid):
             if ID_to_card[rfid][0] == HeartfireHero:
-                ui.msg1.set('')
+                ui.msg1.set('Conjurando Burn Together')
                 ui.msg2.set('')
                 ui.msg3.set('')
                 ui.warning("Declare um jogador alvo")
-                # TODO: informar que está aguardando jogador alvo
-
                 uxs.clear_all_callbacks()
                 uxs.ON_RFID.append(BT_getplayer)
 
@@ -280,73 +268,81 @@ def conjurar_magica(carta: CartaMagic):
 
 def MR_trigger_HH():
     global uxs
-    ui.msg1.set('')
+    ui.msg1.set('O trigger "Adicione um contador +1/+1 a Heartfire Hero" foi adicionado ao stack')
     ui.msg2.set('')
     ui.msg3.set('')
-    ui.warning.set("carata   ")
-    # TODO: informar ao jogador sobre o trigger sendo colocado no stack
+    ui.warning.set("Aperte o botão azul para continuar")
     # O trigger "Adicione um contador +1/+1 a Heartfire Hero" foi adicionado ao stack
-
     uxs.clear_all_callbacks()
     uxs.ON_B_AZUL.append(MR_addcounters_HH)
 
 def MR_addcounters_HH():
     HeartfireHero.poder_base += 1
     HeartfireHero.resistencia_base += 1
-
-    # TODO: informar ao jogador que Heartfire Hero recebeu um contador +1/+1
-
+    ui.msg1.set("A carta Heartfire Hero recebeu um contador +1/+1")
+    ui.msg2.set("Heartfire Hero agora é uma criatura 2/2")
+    ui.msg3.set("")
+    ui.warning.set("Aperte o botão azul para continuar")
     uxs.clear_all_callbacks()
     uxs.ON_B_AZUL.append(MR_createtoken_HH)
 
 def MR_createtoken_HH():
     HeartfireHero.poder_base += 2
 
-    # TODO: informar ao jogador que o monster role token foi criado e atrelado a heartfire hero. avisar que o stack acabou
-
+    ui.msg1.set("Um monster role token foi atrelado a Heartfire Hero")
+    ui.msg2.set("Heartfire Hero recebe +2/+0 até o fim do turno")
+    ui.msg3.set("Heartfire Hero agora é uma criatura 5/3")
+    ui.warning.set("Aperte o botão azul para continuar")
     uxs.clear_all_callbacks()
     uxs.ON_B_AZUL.append(main_phase)
 
 def BT_getplayer(rfid):
     if rfid not in ID_to_player.keys():
-        # TODO: ID invalido
+        ui.warning.set("Identificador de jogador inválido.Passe um ID válido")
         return
-
+    
+    ui.msg2.set(f"O jogador alvo é o {ID_to_player[rfid].ID}")
+    ui.msg3.set("")
+    ui.warning.set("Aperte o botão azul para continuar")
     uxs.clear_all_callbacks()
     uxs.ON_B_AZUL.append(BT_cause_damage_sac)
 
 def BT_cause_damage_sac():
     player_golgari.vida -= HeartfireHero.poder
+    ui.msg1.set(f"O jogador Golgari recebeu {HeartfireHero.poder} de dano")
+    ui.msg2.set(f"Heartfire Hero foi sacrificada")
+    ui.msg3.set(f"A habilidade de Heartfire Hero foi ativada")
+    ui.warning.set("Aperte o botão azul para continuar")
 
-    # TODO: jogador golgari recebe dano, hh é sacrificado (trigger adicionado ao stack)
 
     uxs.clear_all_callbacks()
-    uxs.ON_B_AZUL.append()
+    uxs.ON_B_AZUL.append(BT_hh_death_trigger)
 
 def BT_hh_death_trigger():
     player_golgari.vida -= HeartfireHero.poder
 
-    # TODO: resolução do trigger, dano ao jogador golgari
+    ui.msg1.set(f"O jogador Golgari recebeu {HeartfireHero.poder} de dano")
+    ui.msg2.set(f"")
+    ui.msg3.set(f"")
+    ui.warning.set("Aperte o botão azul para continuar")
 
     uxs.clear_all_callbacks()
     uxs.ON_B_AZUL.append(main_phase)
 
 def fim_jogo():
-    # TODO: informar que o jogador golgari venceu
+    ui.title.set("Fim de jogo")
+    ui.msg1.set("Jogador Golgari venceu!")
+    ui.msg2.set('')
+    ui.msg3.set('')
+    ui.warning.set('')
     uxs.clear_all_callbacks()
     # TODO: Voltar à tela inicial do UX System
 
-# TODO: remover pass
 def ativar_habilidade(carta: CartaMagic):
     if carta != LlanowarElves:
-        ui.msg1.set('')
-        ui.msg2.set('')
-        ui.msg3.set('')
-        # TODO: informar ao jogador que a carta não tem habilidades
         ui.warning.set(f"{carta.nome} não tem habilidades")
         return
     
-    # TODO: perguntar o jogador se ele quer ativar a habilidade da carta
     uxs.clear_all_callbacks()
     ui.msg1.set(f'Deseja ativar a habilidade de {carta.nome}?')
     ui.msg2.set(f'Aperte o botão azul para ativar a habilidade da {carta.nome}')
@@ -355,11 +351,10 @@ def ativar_habilidade(carta: CartaMagic):
     
     def habilidade():
         player_golgari.mana_extra += 1
-        ui.msg1.set('')
+        ui.msg1.set('Jogador Golgari recebeu mana extra')
         ui.msg2.set('')
         ui.msg3.set('')
-        ui.warning.set("Jogador Golgari recebeu mana extra")
-        # TODO: informar ao jogador golgari que ele recebeu uma mana extra
+        ui.warning.set("Aperte o botão azul para continuar")
 
         uxs.clear_all_callbacks()
         uxs.ON_B_AZUL.append(main_phase)
