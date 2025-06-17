@@ -173,7 +173,7 @@ def declare_attacks():
 
 def declare_blocks():
     global uxs
-    ui.msg1.set("Você está sendo atacado")
+    ui.msg1.set("O oponente está sendo atacado")
     ui.msg2.set("")
     ui.msg3.set("")
     ui.warning.set("Declare bloqueadores!")
@@ -192,13 +192,13 @@ def resultados_combate():
         players[(current_player + 1)%2].vida =  0
         uxs.clear_all_callbacks()
         uxs.ON_B_AZUL.append(fim_jogo)
-        ui.msg1.set(f'O jogador {oponente.ID} perdeu toda sua vida')
+        ui.msg1.set(f'O jogador {oponente.ID.value} perdeu toda sua vida')
         ui.msg2.set('')
         ui.msg3.set('')
         ui.warning.set("Aperte o botão azul para continuar")
         return
     else:
-        ui.msg1.set(f"O jogador {oponente.ID} recebeu {dano_causado} de dano")
+        ui.msg1.set(f"O jogador {oponente.ID.value} recebeu {dano_causado} de dano")
         ui.msg2.set("Aperte o botão azul para continuar")
         ui.msg3.set("")
         ui.warning.set("")
@@ -277,8 +277,8 @@ def MR_trigger_HH():
     uxs.ON_B_AZUL.append(MR_addcounters_HH)
 
 def MR_addcounters_HH():
-    HeartfireHero.poder_base += 1
-    HeartfireHero.resistencia_base += 1
+    HeartfireHero.poder += 1
+    HeartfireHero.resistencia += 1
     ui.msg1.set("A carta Heartfire Hero recebeu um contador +1/+1")
     ui.msg2.set("Heartfire Hero agora é uma criatura 2/2")
     ui.msg3.set("")
@@ -287,7 +287,7 @@ def MR_addcounters_HH():
     uxs.ON_B_AZUL.append(MR_createtoken_HH)
 
 def MR_createtoken_HH():
-    HeartfireHero.poder_base += 2
+    HeartfireHero.poder += 2
 
     ui.msg1.set("Um monster role token foi atrelado a Heartfire Hero")
     ui.msg2.set("Heartfire Hero recebe +2/+0 até o fim do turno")
@@ -301,7 +301,7 @@ def BT_getplayer(rfid):
         ui.warning.set("Identificador de jogador inválido.Passe um ID válido")
         return
     
-    ui.msg2.set(f"O jogador alvo é o {ID_to_player[rfid].ID}")
+    ui.msg2.set(f"O jogador alvo é o {ID_to_player[rfid].ID.value}")
     ui.msg3.set("")
     ui.warning.set("Aperte o botão azul para continuar")
     uxs.clear_all_callbacks()
@@ -346,7 +346,7 @@ def ativar_habilidade(carta: CartaMagic):
     uxs.clear_all_callbacks()
     ui.msg1.set(f'Deseja ativar a habilidade de {carta.nome}?')
     ui.msg2.set(f'Aperte o botão azul para ativar a habilidade da {carta.nome}')
-    ui.msg3.set(f'Aperte o botão vermelho para não usa a habilidade')
+    ui.msg3.set(f'Aperte o botão vermelho para não usar a habilidade')
     ui.warning.set("")
     
     def habilidade():
