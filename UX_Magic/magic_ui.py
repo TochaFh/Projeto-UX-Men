@@ -62,6 +62,7 @@ class TextHolder:
         self.warning = _warning_label
         self.LABELS_IMG_CARTAS = lbls
         self.janela = _janela
+        self.task_hide = None
 
     def mostrar_carta(self, txt, img_code=None):
         global txt_leitura
@@ -69,6 +70,10 @@ class TextHolder:
         txt_leitura.set(txt)
         if img_code != None:
             self.LABELS_IMG_CARTAS[img_code].place(relx=0.85, rely=0.2, anchor="n")
+        
+        if self.task_hide:
+            self.janela.after_cancel(self.task_hide)
+        self.task_hide = self.janela.after(5000, self.esconder_carta)
         self.janela.update_idletasks()
 
     def esconder_carta(self):
