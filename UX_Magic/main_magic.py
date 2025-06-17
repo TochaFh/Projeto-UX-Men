@@ -188,6 +188,7 @@ def declare_blocks():
 def resultados_combate():
     global uxs, atacantes, main_count, players
     dano_causado = 0
+    oponente = players[(current_player + 1)%2] 
     for carta in atacantes:
         dano_causado += carta.poder
 
@@ -198,8 +199,16 @@ def resultados_combate():
         players[(current_player + 1)%2].vida =  0
         uxs.clear_all_callbacks()
         uxs.ON_B_AZUL.append(fim_jogo)
+        ui.msg1.set(f'O jogador {oponente} perdeu toda sua vida')
+        ui.msg2.set('')
+        ui.msg3.set('')
+        ui.warning.set("Aperte o botão azul para continuar")
         return
     else:
+        ui.msg1.set(f"O jogador {oponente} recebeu {dano_causado} de dano")
+        ui.msg2.set("Aperte o botão azul para continuar")
+        ui.msg3.set("")
+        ui.warning.set("")
         players[(current_player + 1)%2].vida -= dano_causado
     
 
@@ -330,6 +339,9 @@ def fim_jogo():
 # TODO: remover pass
 def ativar_habilidade(carta: CartaMagic):
     if carta != LlanowarElves:
+        ui.msg1.set('')
+        ui.msg2.set('')
+        ui.msg3.set('')
         # TODO: informar ao jogador que a carta não tem habilidades
         ui.warning.set(f"{carta.nome} não tem habilidades")
         return
@@ -337,12 +349,16 @@ def ativar_habilidade(carta: CartaMagic):
     # TODO: perguntar o jogador se ele quer ativar a habilidade da carta
     uxs.clear_all_callbacks()
     ui.msg1.set(f'Deseja ativar a habilidade de {carta.nome}?')
-    ui.msg2.set('')
-    ui.msg3.set('')
+    ui.msg2.set(f'Aperte o botão azul para ativar a habilidade da {carta.nome}')
+    ui.msg3.set(f'Aperte o botão vermelho para não usa a habilidade')
+    ui.warning.set("")
     
     def habilidade():
         player_golgari.mana_extra += 1
-
+        ui.msg1.set('')
+        ui.msg2.set('')
+        ui.msg3.set('')
+        ui.warning.set("Jogador Golgari recebeu mana extra")
         # TODO: informar ao jogador golgari que ele recebeu uma mana extra
 
         uxs.clear_all_callbacks()
